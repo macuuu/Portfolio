@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio – Level Designer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body class="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-200 font-sans">
+
+  <!-- Header -->
+  <header class="bg-gray-800/80 backdrop-blur-md shadow-md sticky top-0 z-50 animate-fadeIn">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-extrabold text-indigo-400 tracking-wide">Maciej Różewicz</h1>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="#projects" class="hover:text-indigo-400 transition-colors">Projects</a>
+        <a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a>
+        <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
+        <a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative max-w-6xl mx-auto px-6 py-20 text-center overflow-hidden">
+    <h2 class="text-5xl font-extrabold text-white mb-4 animate-fadeInUp">Level Designer | Mobile Games</h2> 
+    <div class="h-1 w-40 mx-auto bg-indigo-500 rounded-full mb-6"></div>
+    <p class="text-lg text-gray-300 animate-fadeInUp" style="animation-delay:0.2s;">I create engaging and optimized levels for mobile games using Unity and Unreal Engine.</p>
+    <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 via-transparent to-pink-500/20 blur-3xl animate-pulse"></div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="max-w-6xl mx-auto px-6 py-16">
+    <h3 class="text-3xl font-bold mb-10 text-white text-center">Projects</h3>
+    <div class="grid md:grid-cols-2 gap-10">
+      <!-- Project Card -->
+      <div class="group bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition duration-500">
+        <img src="images/placeholder.jpg" alt="Project" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+        <div class="p-6">
+          <h4 class="text-xl font-semibold text-white mb-2">Sunken Island (Unreal Engine)</h4>
+          <p class="text-gray-400">An exploration level created in Unreal Engine, focused on environmental storytelling and optimization for mobile devices.</p>
+        </div>
+      </div>
+      <!-- Another Project -->
+      <div class="group bg-gray-800 rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition duration-500">
+        <img src="images/placeholder.jpg" alt="Project" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
+        <div class="p-6">
+          <h4 class="text-xl font-semibold text-white mb-2">Traffic Puzzle</h4>
+          <p class="text-gray-400">A puzzle game where I designed levels with increasing difficulty, balancing challenge and player satisfaction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="bg-gradient-to-r from-gray-800 to-gray-900 py-16">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-10 text-white">Skills</h3>
+      <ul class="grid md:grid-cols-3 gap-6 text-gray-300">
+        <li class="bg-gray-700/50 p-4 rounded-xl shadow hover:shadow-lg transition">Unity (C#), Unreal Engine (Blueprints)</li>
+        <li class="bg-gray-700/50 p-4 rounded-xl shadow hover:shadow-lg transition">Mobile game level design</li>
+        <li class="bg-gray-700/50 p-4 rounded-xl shadow hover:shadow-lg transition">Optimization for mobile devices</li>
+        <li class="bg-gray-700/50 p-4 rounded-xl shadow hover:shadow-lg transition">Gameplay balance and pacing</li>
+        <li class="bg-gray-700/50 p-4 rounded-xl shadow hover:shadow-lg transition">UX and player onboarding</li>
+        <li class="bg-gray-700/50 p-4 rounded-xl shadow hover:shadow-lg transition">Testing and iteration</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="max-w-4xl mx-auto px-6 py-16 text-center">
+    <h3 class="text-3xl font-bold mb-6 text-white">About Me</h3>
+    <p class="text-gray-300 leading-relaxed text-lg">
+      I am a level designer based in Wrocław, specializing in mobile games. I am passionate about creating experiences that are intuitive, engaging, and optimized for portable devices. I draw inspiration from classic puzzle games and RPGs, as well as modern free-to-play titles that focus on balanced player progression.
+    </p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-indigo-700 py-16 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-indigo-600/20 blur-2xl animate-pulse"></div>
+    <div class="relative max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-6">Contact</h3>
+      <p class="mb-4">Have a question or a collaboration idea? Get in touch with me:</p>
+      <p class="font-semibold">✉ maciej.rozewicz@example.com</p>
+      <div class="mt-6 flex justify-center space-x-6">
+        <a href="https://linkedin.com" class="underline hover:text-gray-200">LinkedIn</a>
+        <a href="https://github.com" class="underline hover:text-gray-200">GitHub</a>
+        <a href="https://itch.io" class="underline hover:text-gray-200">itch.io</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-gray-500 py-6 text-sm bg-gray-900">
+    © 2025 Maciej Różewicz – Level Design Portfolio
+  </footer>
+
+  <!-- ScrollReveal Animations -->
+  <script>
+    ScrollReveal().reveal('.animate-fadeInUp', { distance: '40px', origin: 'bottom', opacity: 0, duration: 1000, easing: 'ease-out', interval: 200 });
+    ScrollReveal().reveal('.group', { distance: '20px', origin: 'bottom', opacity: 0, duration: 800, easing: 'ease-out', interval: 150 });
+  </script>
+
+</body>
+</html>
