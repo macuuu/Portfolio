@@ -17,7 +17,7 @@ This is a personal **portfolio website** for showcasing level design projects fo
 ## 📂 Project Structure
 ```
 ├── index.html      # Main portfolio page
-├── /images         # Project images (upload your own)
+├── /images         # Project images
 ```
 
 ---
