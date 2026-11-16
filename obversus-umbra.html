@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Obversus: Umbra, The Dam | Level design case study | Maciej Różewicz</title>
+  <meta name="description" content="Level design and greybox case study: the Dam hub level of Obversus: Umbra, an Unreal Engine 5 FPS by GrinGate Studios. Light, shape and composition in blockout.">
+  <meta property="og:title" content="Obversus: Umbra, The Dam | Level design case study">
+  <meta property="og:image" content="assets/img/ou/04-turbine-hall-catwalks.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">Maciej Różewicz <span>Level Design</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="index.html#approach">Approach</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#other">Other projects</a>
+      <a href="index.html#career">Career</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="case-hero">
+    <div class="hero-media">
+      <img src="assets/img/ou/04-turbine-hall-catwalks.webp" alt="Turbine hall greybox seen from an upper balcony">
+    </div>
+    <div class="wrap">
+      <div class="breadcrumb"><a href="index.html">Home</a> / <a href="index.html#work">Work</a> / Obversus: Umbra</div>
+      <p class="role" style="font-family: var(--font-mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0 0 16px;">Level design &middot; Blockout &middot; Level art</p>
+      <h1>Obversus: Umbra<br>The Dam</h1>
+      <p class="lead read">How I built a vertical hub level around a massive Dam in Unreal Engine 5, and how I use light, shape and composition to make a grey blockout readable, tense and easy to navigate.</p>
+      <ul class="tags">
+        <li>Unreal Engine 5</li><li>Blockout</li><li>Lighting for gameplay</li><li>Composition</li><li>World Partition</li><li>Data Layers</li><li>Packed Level Actors</li><li>PCG</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrap case-layout">
+
+    <aside class="toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol>
+        <li><a href="#context">Context</a></li>
+        <li><a href="#goal">The goal</a></li>
+        <li><a href="#shape">Shape: reading a megastructure</a></li>
+        <li><a href="#light">Light: leading the player</a></li>
+        <li><a href="#composition">Composition: framing the view</a></li>
+        <li><a href="#spaces">Spaces of the Dam</a></li>
+        <li><a href="#kit">The greybox kit</a></li>
+        <li><a href="#pipeline">Pipeline in Unreal</a></li>
+        <li><a href="#lessons">What I learned</a></li>
+      </ol>
+    </aside>
+
+    <article>
+
+      <!-- 01 -->
+      <section class="chapter" id="context">
+        <p class="eyebrow"><span class="num">01</span>Context</p>
+        <h2>Feature context</h2>
+        <div class="read">
+          <p class="lead">Obversus: Umbra is a first-person shooter in development at GrinGate Studios, built in Unreal Engine 5. Its main map is a single, large hub: a Dam, the city structures around it, and several underground layers below.</p>
+          <p>I joined the project as Game &amp; Level Designer and own the <strong>blockout and level design</strong> of the spaces on this page. Every image here is my greybox, captured in engine. Final art, props and the final lighting pass will come later. The goal of this stage is that the level already plays and reads well without them.</p>
+        </div>
+        <dl class="context">
+          <div><dt>Project</dt><dd>Obversus: Umbra</dd></div>
+          <div><dt>Studio</dt><dd>GrinGate Studios</dd></div>
+          <div><dt>Status</dt><dd>In development, greybox</dd></div>
+          <div><dt>Engine</dt><dd>Unreal Engine 5</dd></div>
+          <div><dt>My role</dt><dd>Blockout, level design, gameplay lighting</dd></div>
+          <div><dt>Period</dt><dd>2026 to now</dd></div>
+        </dl>
+        <div class="callout"><p>Work in progress. Materials are greybox grids and temporary colours, and some meshes are placeholders. Images are shared with the permission of GrinGate Studios.</p></div>
+      </section>
+
+      <!-- 02 -->
+      <section class="chapter" id="goal">
+        <p class="eyebrow"><span class="num">02</span>The goal</p>
+        <h2>One structure, many layers, zero signs</h2>
+        <div class="read">
+          <p>The Dam is the backbone of the map. The player moves through it from the top of the wall, through the turbine hall inside it, down to the sewers and the flooded layers under its foundations. The level must do three things at the same time:</p>
+          <ul>
+            <li><strong>Orient.</strong> The player must always know where they are relative to the Dam, even deep underground.</li>
+            <li><strong>Guide.</strong> The golden path must be clear without arrows, HUD markers or text.</li>
+            <li><strong>Unsettle.</strong> The space should feel too big, too empty and slightly wrong, which supports the tone of the game.</li>
+          </ul>
+          <p>In greybox, I have only three tools to do this: <strong>shape, light and composition</strong>. The next three chapters show how I use each one.</p>
+        </div>
+      </section>
+
+      <!-- 03 -->
+      <section class="chapter" id="shape">
+        <p class="eyebrow"><span class="num">03</span>Shape</p>
+        <h2>Reading a megastructure</h2>
+        <div class="read">
+          <p>A Dam is a simple shape: one long, tall wall. That simplicity is useful. A single dominant form becomes a landmark that the player can see from most of the map. My work was to keep the big shape clean and to put the complexity into the layers around it and inside it.</p>
+        </div>
+        <div class="principles">
+          <div><h3>One dominant form per area</h3><p>The wall is vertical. The turbine hall is a long box with repeating trusses. Stair towers are round cages. Each area has one shape that the player remembers.</p></div>
+          <div><h3>Scale contrast</h3><p>I made the Dam wall taller during revisions and put it on large supporting pillars. Small catwalks, stairs and railings on its face show how big it is.</p></div>
+          <div><h3>Rhythm and repetition</h3><p>Trusses, pillars, niches and carved figures on the wall repeat at a fixed interval. Repetition makes a space feel built and lets one broken element stand out, such as a crack in the wall or a crashed monorail.</p></div>
+          <div><h3>Silhouette first</h3><p>I check each area with no light detail and flat grey. If I cannot tell the floor, the path and the threat apart by silhouette alone, I change the geometry, not the lighting.</p></div>
+        </div>
+        <div class="gallery">
+          <figure class="g-6"><img src="assets/img/ou/17-dam-wall-niches.webp" alt="Dam wall face with vertical ribs, niches and a lit doorway" loading="lazy" data-zoom><figcaption>The Dam wall. Vertical ribs and niches give rhythm. One lit doorway breaks it.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/ou/18-dam-supports-exterior.webp" alt="Angled support beams on the Dam with a lit gallery" loading="lazy" data-zoom><figcaption>Angled supports carry a gallery. Diagonals add tension to a calm vertical wall.</figcaption></figure>
+          <figure class="g-4"><img src="assets/img/ou/07-spiral-cage.webp" alt="Round cage stair tower in a dark space" loading="lazy" data-zoom><figcaption>A round cage tower. A different shape marks a vertical connection.</figcaption></figure>
+          <figure class="g-4"><img src="assets/img/ou/13-pillar-canyon.webp" alt="Stacked catwalks and stairs between massive orange pillars" loading="lazy" data-zoom><figcaption>Massive pillars dwarf the catwalks. Small figures show the scale, and one light marks the top.</figcaption></figure>
+          <figure class="g-4"><img src="assets/img/ou/16-flooded-beams.webp" alt="Tiled beams crossing over flooded floor" loading="lazy" data-zoom><figcaption>Crossing beams over water. A broken structure, read from the silhouette.</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- 04 -->
+      <section class="chapter" id="light">
+        <p class="eyebrow"><span class="num">04</span>Light</p>
+        <h2>Leading the player with value and colour</h2>
+        <div class="read">
+          <p>I light the blockout early, before the layout is final. Light changes how a space plays, so I want to test both together. My rule is simple: <strong>keep most of the frame dark, and spend light only where it means something.</strong></p>
+          <h3>Value as a path</h3>
+          <p>The eye goes to the brightest area first. In the storage room below, one overhead light makes a pool on the floor, and the shelves cut it into long shadows that point forward. The player walks into the light with no other cue. In large halls, I place a few hard key lights on the floor of the golden path and let the rest fall into shadow.</p>
+          <h3>Colour as a language</h3>
+          <p>Colour in this level is never decoration. I use a small, fixed set of meanings so that the player learns them quickly:</p>
+          <ul>
+            <li><strong>White and cool grey:</strong> neutral space, the path, safe light.</li>
+            <li><strong>Red:</strong> danger, machinery and alarms. Three red signals in the hangar give a focal point. In alert state a whole catwalk turns red.</li>
+            <li><strong>Green:</strong> exits and progress. One green exit sign at the end of a long, dark tiled corridor is enough to pull the player forward.</li>
+          </ul>
+          <h3>Light as a landmark</h3>
+          <p>A strong shaft of light through fog becomes a vertical landmark. The player can see it over low walls and use it to find the way through a maze-like area.</p>
+        </div>
+        <div class="gallery">
+          <figure class="g-12"><img src="assets/img/ou/01-storage-room.webp" alt="Dark storage room, one overhead light makes a pool on the floor" loading="lazy" data-zoom><figcaption>One light, one direction. Shelf shadows point the player forward.</figcaption></figure>
+          <figure class="g-8"><img src="assets/img/ou/02-hangar-red-signals.webp" alt="Hangar with three red lights under trusses" loading="lazy" data-zoom><figcaption>Red means machinery or danger. Three signals make the focal point of a dark hangar.</figcaption></figure>
+          <figure class="g-4"><img src="assets/img/ou/09-tiled-corridor-exit.webp" alt="Dark tiled corridor with a green exit sign" loading="lazy" data-zoom><figcaption>Green means exit. A small sign pulls the eye down a long corridor.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/ou/12-catwalk-red-alert.webp" alt="Catwalk under red alert lighting" loading="lazy" data-zoom><figcaption>Alert state. The same space reads as hostile when the whole palette turns red.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/ou/10-tiled-maze-lightshaft.webp" alt="Light shaft above tiled low walls" loading="lazy" data-zoom><figcaption>A light shaft is a landmark you can see over the walls.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/ou/15-flooded-pool-red.webp" alt="Flooded tiled room with a red light reflected in water" loading="lazy" data-zoom><figcaption>Water doubles every light. A red reflection marks the point of interest.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/ou/19-fog-lasers.webp" alt="Bright fog with red laser lines and dark blocks" loading="lazy" data-zoom><figcaption>Inverted value: dark shapes on bright fog. Red lines show the hazard.</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- 05 -->
+      <section class="chapter" id="composition">
+        <p class="eyebrow"><span class="num">05</span>Composition</p>
+        <h2>Framing the player's view</h2>
+        <div class="read">
+          <p>The player controls the camera, but I control what the camera finds. At each entrance, landing and turn, I decide what the first frame shows. I build these frames on purpose and then check them in engine from the player's eye height.</p>
+        </div>
+        <div class="principles">
+          <div><h3>Frames inside the frame</h3><p>Doors, windows and holes in walls work as picture frames. They isolate the next goal and hide what is not important yet.</p></div>
+          <div><h3>Leading lines</h3><p>Railings, tile grids, beams and the edges of ramps all point to the next objective. The grid material is not only a measurement tool: it is also perspective.</p></div>
+          <div><h3>Depth layers</h3><p>Fog separates foreground, middle ground and background. The near area is dark, the goal is in the lit middle ground, and the far structure is a soft silhouette.</p></div>
+          <div><h3>Reveal and reward</h3><p>A tight corridor opens to a large hall seen from above. The first view from a balcony shows the whole route, so the player can plan before going down.</p></div>
+        </div>
+        <div class="gallery">
+          <figure class="g-12"><img src="assets/img/ou/11-window-tilted-room.webp" alt="Through a window into a tilted, flooded room with a body" loading="lazy" data-zoom><figcaption>A window as a frame. A tilted room, a body and a second opening tell a story before the player enters.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/ou/14-flooded-tunnel.webp" alt="Symmetric flooded tunnel with a bright opening" loading="lazy" data-zoom><figcaption>Symmetry and a bright vanishing point. The tile line on the floor leads to it.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/ou/08-tiled-hall-stairs.webp" alt="Large tiled hall with stairs and fog" loading="lazy" data-zoom><figcaption>Tile grid as perspective. Fog pushes the back wall away.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/ou/05-turbine-hall-stairs.webp" alt="Stairs down into the turbine hall with a view of the route" loading="lazy" data-zoom><figcaption>Reveal from above. The full route of the turbine hall is visible before the player goes down.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/ou/03-mannequin-gallery.webp" alt="Row of mannequins in a corridor with hard light" loading="lazy" data-zoom><figcaption>Repetition with faces. A row of figures makes a corridor feel watched.</figcaption></figure>
+          <figure class="g-12"><img src="assets/img/ou/06-dam-exterior-fog.webp" alt="Foggy exterior of the Dam with red edge lights, first-person view" loading="lazy" data-zoom><figcaption>Exterior in heavy fog. Red edge lights draw the line of the walkway when the shapes disappear.</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- 06 -->
+      <section class="chapter" id="spaces">
+        <p class="eyebrow"><span class="num">06</span>Spaces</p>
+        <h2>Spaces of the Dam</h2>
+        <div class="read">
+          <p>The hub is a chain of spaces with different scale, light and mood. I keep the contrast between neighbours high, so each transition feels like an event.</p>
+          <ul>
+            <li><strong>The Dam wall.</strong> The exterior face with catwalks and stairs, carved figures in niches, visors and a ceiling over the top route. Later revisions made the wall taller, added a crack and a crashed monorail as story beats, and set the whole structure on supporting pillars enclosed by rock.</li>
+            <li><strong>Turbine hall and turbine chamber.</strong> A long interior volume with turbines and water breakers, crossed by catwalks on several floors. I added extra routes so that combat can flow on more than one level.</li>
+            <li><strong>Generator hangar and connector corridors.</strong> Underground hangars and corridors that link the underlayers. A modular connector room keeps transitions consistent.</li>
+            <li><strong>The sewers.</strong> A cascading canal with bridges and catwalks, open columns and a golden path from the starting pipe to the elevator shaft.</li>
+            <li><strong>Lobby and elevator.</strong> A building lobby reached by an elevator from the control room. A Level Sequencer drives the ride, and its speed is tuned for pacing.</li>
+            <li><strong>Disposal pit and outflow canal.</strong> A deep pit made walkable down to the outflow canal, with a corridor that attaches to the outside of the Dam.</li>
+            <li><strong>Flooded layers.</strong> Tiled, half-sunk rooms and tunnels with water and blood. Reflections double the light, and the low water line makes the rooms feel drowned.</li>
+          </ul>
+        </div>
+        <div class="gallery">
+          <figure class="g-8"><img src="assets/img/ou/04-turbine-hall-catwalks.webp" alt="Turbine hall with catwalks on several levels" loading="lazy" data-zoom><figcaption>Turbine hall. Multiple floors of catwalks for vertical combat.</figcaption></figure>
+          <figure class="g-4"><img src="assets/img/ou/14-flooded-tunnel.webp" alt="Flooded tunnel" loading="lazy" data-zoom><figcaption>Flooded layers under the foundations.</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- 07 -->
+      <section class="chapter" id="kit">
+        <p class="eyebrow"><span class="num">07</span>Greybox kit</p>
+        <h2>A metric kit that keeps the level honest</h2>
+        <div class="read">
+          <p>A large level changes every week. To change it fast without losing gameplay metrics, I built and maintain a <strong>modular whitebox kit</strong>. Every mesh name carries its size in centimetres, so the content browser is also a metrics sheet.</p>
+        </div>
+        <div class="table-scroll">
+          <table class="kit">
+            <thead><tr><th>Piece</th><th>Size (cm)</th><th>Why it exists</th></tr></thead>
+            <tbody>
+              <tr><td>Cover block</td><td>200 &times; 50 &times; 110 / 140 / 200</td><td>Low, medium and full cover heights for the FPS character, so cover reads the same everywhere.</td></tr>
+              <tr><td>Climb block</td><td>200 &times; 50 &times; 140 / 180</td><td>Fixed heights for mantle and climb tests.</td></tr>
+              <tr><td>Prone space</td><td>60 &times; 220</td><td>Checks that a gap fits a prone player.</td></tr>
+              <tr><td>Jersey barrier, pipe bundle, shelf rack, filter tank</td><td>Various</td><td>Cover with a recognisable silhouette, so encounters read as places, not boxes.</td></tr>
+              <tr><td>Column, arch, niche, pediment, plinth</td><td>Wall module 400 wide, 376 high</td><td>An architectural set for the monumental parts of the Dam.</td></tr>
+              <tr><td>Ceiling, floor, curb</td><td>200 and 400 grid</td><td>Snaps to the same grid as walls.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="read">
+          <h3>Material tiers</h3>
+          <p>The whitebox materials are not only colours. A set of five tiers (<strong>open, thin, medium, solid, armored</strong>) shows how much protection a surface gives. A tester can see at a glance which wall stops bullets and which does not, long before final materials exist.</p>
+          <h3>Tools I added</h3>
+          <ul>
+            <li><strong>Packed Level Actors</strong> for repeated set pieces: stair towers, fire escapes, catwalks, the cascading canal, the turbine chamber and security gates. Change one, and every copy updates.</li>
+            <li><strong>A scalable barrier Blueprint</strong> that keeps its proportions when scaled.</li>
+            <li><strong>Text and mesh billboards</strong> for notes in the level that always face the camera, so the team can read intent during playtests.</li>
+            <li><strong>A PCG spline tool</strong> that spawns an organic tunnel kit along a spline, with correct corner pieces and loop points.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 08 -->
+      <section class="chapter" id="pipeline">
+        <p class="eyebrow"><span class="num">08</span>Pipeline</p>
+        <h2>Keeping a huge greybox fast in Unreal</h2>
+        <div class="read">
+          <ul>
+            <li><strong>World Partition.</strong> I migrated the whole greybox to World Partition early, so the team can work in parallel and the map streams correctly.</li>
+            <li><strong>Data Layers.</strong> Buildings, the sewers and enemy placement each live on their own Data Layers. I can hide a full sector or test a different enemy layout without touching geometry.</li>
+            <li><strong>Playable phases.</strong> I made the level playable end to end in phases, with working elevators and floors at each step, instead of polishing one area at a time.</li>
+            <li><strong>Collision passes.</strong> Complex organic kits use complex collision as simple where accuracy matters, and simple collision where performance matters.</li>
+            <li><strong>Bookmarks and golden path.</strong> Camera bookmarks at key frames and a marked golden path let anyone on the team jump to a view and check it.</li>
+            <li><strong>Automation.</strong> I use MCP servers connected to the editor to automate repetitive greybox work, imports and documentation.</li>
+            <li><strong>Test maps.</strong> Separate maps for parkour metrics, co-op and PvP tests, and audio triggers, so experiments do not break the main level.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 09 -->
+      <section class="chapter" id="lessons">
+        <p class="eyebrow"><span class="num">09</span>What I learned</p>
+        <h2>What I learned</h2>
+        <div class="read">
+          <p><strong>Light the greybox early.</strong> A path that reads well in flat light can disappear in a dark game. Lighting during blockout found layout problems that I would not see otherwise.</p>
+          <p><strong>Scale lies in the editor.</strong> A wall that looks huge from the editor camera can look normal from eye height. I now check every major space in play mode, with the real character, before I approve it.</p>
+          <p><strong>A kit is a contract.</strong> Fixed metrics in the asset names saved many discussions with design and combat. When everyone uses the same cover heights, the level stays consistent.</p>
+          <p><strong>Next steps.</strong> Encounter tuning in the turbine hall, the handover of key frames to the art team, and a full lighting pass that keeps the colour language from the greybox.</p>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <div class="wrap next-case">
+    <a class="btn" href="index.html#work">&#8592; All work</a>
+    <a class="btn primary" href="index.html#contact">Get in touch</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>&copy; <span id="year">2026</span> Maciej Różewicz. Obversus: Umbra images &copy; GrinGate Studios, work in progress.</span>
+    <a href="#top">Back to top</a>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
