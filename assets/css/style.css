@@ -161,6 +161,7 @@ section.block.tight { padding: 80px 0; }
 .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .pillar { background: var(--bg-raised); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .pillar img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+.pillar img.pos-left { object-position: left center; }
 .pillar .body { padding: 22px 24px 26px; }
 .pillar p { font-size: 15.5px; margin: 0; }
 @media (max-width: 900px) { .pillars { grid-template-columns: 1fr; } }
