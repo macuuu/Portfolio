@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261116c">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261119a">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -39,7 +39,7 @@
       <div class="breadcrumb"><a href="index.html">Home</a> / <a href="index.html#other">Other projects</a> / White Glass</div>
       <p class="role" style="font-family: var(--font-mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0 0 16px;">Concept &middot; Level design &middot; Real-time visuals</p>
       <h1>White Glass</h1>
-      <p class="lead read">A case study about how to connect Unreal Engine and TouchDesigner. I built a level from existing assets and used materials and textures made in TouchDesigner to guide the player through a white, glass-like space.</p>
+      <p class="lead read">A white, glass-like level in Unreal Engine 5, with materials made in TouchDesigner that guide the player.</p>
       <ul class="tags">
         <li>Unreal Engine 5</li><li>TouchDesigner</li><li>Level design</li><li>Procedural materials</li><li>Visual guidance</li>
       </ul>
@@ -52,9 +52,8 @@
       <p>On this page</p>
       <ol>
         <li><a href="#context">Context</a></li>
-        <li><a href="#goal">Main target</a></li>
-        <li><a href="#decisions">Decisions</a></li>
-        <li><a href="#questions">Open questions</a></li>
+        <li><a href="#build">The build</a></li>
+        <li><a href="#lessons">What I learned</a></li>
       </ol>
     </aside>
 
@@ -64,10 +63,6 @@
       <section class="chapter" id="context">
         <p class="eyebrow"><span class="num">01</span>Context</p>
         <h2>Two tools, one space</h2>
-        <div class="read">
-          <p>TouchDesigner is a tool for real-time visuals. Unreal Engine is a game engine. I wanted to know how well the two can work together, and whether visuals generated in TouchDesigner can do real level design work: show the player where to go.</p>
-          <p>The result is a point and click puzzle adventure concept. The level is a group of white platforms, glass bridges, stairs and a lattice tower, connected by a long spiral ramp.</p>
-        </div>
         <dl class="context">
           <div><dt>Project</dt><dd>Personal case study</dd></div>
           <div><dt>Engines and tools</dt><dd>Unreal Engine 5, TouchDesigner</dd></div>
@@ -75,44 +70,38 @@
           <div><dt>My role</dt><dd>Concept, level design, materials</dd></div>
           <div><dt>Year</dt><dd>2026</dd></div>
         </dl>
+        <div class="principles">
+          <div><h3>Guide with visuals</h3><p>Generated materials lead the eye along the route.</p></div>
+          <div><h3>Keep it readable</h3><p>Light, glass and patterns separate the path from a white background.</p></div>
+        </div>
       </section>
 
       <!-- 02 -->
-      <section class="chapter" id="goal">
-        <p class="eyebrow"><span class="num">02</span>Main target</p>
-        <h2>Real-time visuals as a guide</h2>
-        <div class="read">
-          <p>The main target was to connect two fields: a game engine and visuals that render in real time. The practical goal was smaller and clearer:</p>
-          <ul><li><strong>Guide the player with visuals.</strong> Materials and textures made in TouchDesigner must lead the eye along the route.</li><li><strong>Keep the space readable.</strong> A white level can easily become flat. Light, glass and generated patterns must separate the path from the background.</li></ul>
+      <section class="chapter" id="build">
+        <p class="eyebrow"><span class="num">02</span>The build</p>
+        <h2>Platforms, glass and a spiral ramp</h2>
+        <ul class="spaces">
+          <li><strong>Geometry</strong> Existing assets, so the time goes to layout and flow</li>
+          <li><strong>Materials</strong> Made in TouchDesigner, imported into Unreal Engine</li>
+          <li><strong>Layout</strong> A map with named areas before any asset</li>
+        </ul>
+        <div class="gallery">
+          <figure class="g-8"><img src="assets/img/projects/white-glass/02-terraces.webp" alt="Glass bridges and white terraces seen from a low angle" loading="lazy" data-zoom><figcaption><strong>Terraces.</strong> Light on the glass bridges leads the eye to the next level.</figcaption></figure>
+          <figure class="g-4"><img src="assets/img/projects/white-glass/03-stairs.webp" alt="Glass stairs between white walls" loading="lazy" data-zoom><figcaption><strong>Stairs.</strong> A bright opening at the top marks the exit.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/projects/white-glass/04-sculpture.webp" alt="Characters on a terrace next to a large lattice sculpture" loading="lazy" data-zoom><figcaption><strong>Lattice sculpture.</strong> A landmark visible from most of the level.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/projects/white-glass/05-character.webp" alt="Character with a red light sword in front of a glass wall" loading="lazy" data-zoom><figcaption><strong>Scale.</strong> The character against the glass walls.</figcaption></figure>
+          <figure class="g-12 contain"><img src="assets/img/projects/white-glass/06-layout-map.webp" alt="Layout map of the White Glass level with named areas" loading="lazy" data-zoom><figcaption><strong>Layout map.</strong> The route and the named areas, planned first.</figcaption></figure>
         </div>
       </section>
 
       <!-- 03 -->
-      <section class="chapter" id="decisions">
-        <p class="eyebrow"><span class="num">03</span>Decisions</p>
-        <h2>What I built and how</h2>
-        <div class="read">
-          <p><strong>Existing assets for the geometry.</strong> I built the level from existing assets. This kept my time for layout, flow and the material pipeline, not for modelling.</p>
-          <p><strong>TouchDesigner for materials and textures.</strong> I made the materials and textures in TouchDesigner and imported them into Unreal Engine. Generated patterns on glass and floors mark the important surfaces.</p>
-          <p><strong>A layout map first.</strong> I planned the route as a map with named areas before I placed any asset. The map below shows the spiral, the bridges and the main squares.</p>
-        </div>
-        <div class="gallery">
-          <figure class="g-8"><img src="assets/img/projects/white-glass/02-terraces.webp" alt="Glass bridges and white terraces seen from a low angle" loading="lazy" data-zoom><figcaption>Glass bridges cross the terraces. Light on the glass leads the eye to the next level.</figcaption></figure>
-          <figure class="g-4"><img src="assets/img/projects/white-glass/03-stairs.webp" alt="Glass stairs between white walls" loading="lazy" data-zoom><figcaption>Stairs connect the levels. A bright opening at the top marks the exit.</figcaption></figure>
-          <figure class="g-6"><img src="assets/img/projects/white-glass/04-sculpture.webp" alt="Characters on a terrace next to a large lattice sculpture" loading="lazy" data-zoom><figcaption>The lattice sculpture is a landmark. It is visible from most of the level.</figcaption></figure>
-          <figure class="g-6"><img src="assets/img/projects/white-glass/05-character.webp" alt="Character with a red light sword in front of a glass wall" loading="lazy" data-zoom><figcaption>Character scale against the glass walls.</figcaption></figure>
-          <figure class="g-12 contain"><img src="assets/img/projects/white-glass/06-layout-map.webp" alt="Layout map of the White Glass level with named areas" loading="lazy" data-zoom><figcaption>Layout map. I planned the route and the named areas before I placed any asset.</figcaption></figure>
-        </div>
-      </section>
-
-      <!-- 04 -->
-      <section class="chapter" id="questions">
-        <p class="eyebrow"><span class="num">04</span>Open questions</p>
+      <section class="chapter" id="lessons">
+        <p class="eyebrow"><span class="num">03</span>What I learned</p>
         <h2>What I learned</h2>
-        <div class="read">
-          <p><strong>TouchDesigner is not a prototyping tool for games.</strong> For game prototyping, its functionality is not sufficient. It is strong as a source of materials, textures and moving patterns, but the playable space, collision and logic must stay in Unreal Engine.</p>
-          <p><strong>Generated visuals can guide.</strong> A pattern that moves or glows on one surface pulls the eye as well as a light does. I now use the same idea when I light a blockout: one strong signal on the path, calm surfaces around it.</p>
-        </div>
+        <ul class="spaces">
+          <li><strong>Not a prototyping tool</strong> TouchDesigner is strong for materials, but play, collision and logic stay in Unreal</li>
+          <li><strong>Generated visuals can guide</strong> A glowing pattern pulls the eye as well as a light does</li>
+        </ul>
         <div class="doc-row">
           <a class="btn primary" href="assets/doc/White_Glass_Concept.pdf" target="_blank" rel="noopener">Concept document (PDF)</a>
         </div>

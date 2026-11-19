@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261116c">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261119a">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -39,7 +39,7 @@
       <div class="breadcrumb"><a href="index.html">Home</a> / <a href="index.html#other">Other projects</a> / Sunken Island</div>
       <p class="role" style="font-family: var(--font-mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0 0 16px;">Level blockout &middot; Level design document &middot; Workshop</p>
       <h1>Sunken Island</h1>
-      <p class="lead read">A third-person action adventure level, made in Unreal Engine 5 during a level design workshop. Combat, puzzles and exploration on a circular jungle island, with the main objective at the centre.</p>
+      <p class="lead read">A third-person action adventure level in Unreal Engine 5. Combat, puzzles and exploration on a circular jungle island.</p>
       <ul class="tags">
         <li>Unreal Engine 5</li><li>Blockout</li><li>Level Design Document</li><li>Combat</li><li>Puzzles</li><li>Exploration</li>
       </ul>
@@ -65,10 +65,6 @@
       <section class="chapter" id="context">
         <p class="eyebrow"><span class="num">01</span>Context</p>
         <h2>Learn the engine through one level</h2>
-        <div class="read">
-          <p>The purpose of this project was to learn the level building tools that are common in Unreal Engine 5. I applied the essential level design techniques in a single project, from the first document to a playable build.</p>
-          <p>The challenge that I set for myself: make a circular level and guide the player around the main objective at the centre.</p>
-        </div>
         <dl class="context">
           <div><dt>Project</dt><dd>Workshop project, single player</dd></div>
           <div><dt>Engine</dt><dd>Unreal Engine 5</dd></div>
@@ -77,6 +73,7 @@
           <div><dt>Development time</dt><dd>3 months</dd></div>
           <div><dt>Play time</dt><dd>About 25 minutes</dd></div>
         </dl>
+        <div class="callout"><p>Challenge: a circular level that guides the player around the main objective at the centre.</p></div>
         <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/KH2MGC_eYqI" title="Sunken Island gameplay video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
       </section>
 
@@ -84,30 +81,32 @@
       <section class="chapter" id="story">
         <p class="eyebrow"><span class="num">02</span>The mission</p>
         <h2>An archaeologist, an artifact and a race</h2>
-        <div class="read">
-          <p>The player is John Smith, an archaeologist. He must find an artifact hidden in the ruins of an ancient civilisation. The artifact has immense power and must not fall into the wrong hands. Other people search for it too: when the mission starts, the player can see helicopters in the distance.</p>
-          <p>The mission takes place on an island in the Caribbean Sea. The player starts on a beach, crosses the jungle and climbs a rocky slope to find the ancient tower. Mercenaries guard the courtyard in front of the temple. To open the tower, the player must solve a puzzle. When the player takes the artifact, reinforcements arrive, and the player must escape to the extraction point.</p>
-        </div>
-        <div class="read">
-          <p><strong>Main objectives</strong></p>
-          <ul><li>Find the entrance to the temple.</li><li>Get the grappling hook.</li><li>Fight waves of enemies.</li><li>Solve the puzzle that opens the way to the temple.</li><li>Solve the puzzle that protects the artifact.</li><li>Escape from the island.</li></ul>
-          <p><strong>Side objectives:</strong> collect treasures, explore the jungle abyss, and finish the mission without being seen.</p>
-        </div>
+        <p class="read">An island in the Caribbean Sea. Find the artifact in the ancient tower before the mercenaries do, then escape.</p>
+        <ul class="spaces">
+          <li><strong>01</strong> Find the entrance to the temple</li>
+          <li><strong>02</strong> Get the grappling hook</li>
+          <li><strong>03</strong> Fight waves of enemies</li>
+          <li><strong>04</strong> Solve the puzzle that opens the temple</li>
+          <li><strong>05</strong> Solve the puzzle that protects the artifact</li>
+          <li><strong>06</strong> Escape from the island</li>
+          <li><strong>Side</strong> Treasures, the jungle abyss, a stealth run</li>
+        </ul>
       </section>
 
       <!-- 03 -->
       <section class="chapter" id="layout">
         <p class="eyebrow"><span class="num">03</span>Layout</p>
         <h2>A loop around the temple</h2>
-        <div class="read">
-          <p>The temple at the centre is the landmark and the goal. The route goes around it in a circle, so the player always knows the direction of the objective. Sightlines to the temple open and close along the loop, and the grappling hook gives new ways to cross the jungle.</p>
-          <p>Before the blockout, I made the full set of planning documents: a level flow chart, a pacing graph, a bubble diagram, a 2D map and the golden path.</p>
-        </div>
+        <ul class="spaces">
+          <li><strong>Landmark</strong> The temple at the centre is always the goal</li>
+          <li><strong>Sightlines</strong> Views to the temple open and close along the loop</li>
+          <li><strong>Planning</strong> Flow chart, pacing graph, bubble diagram, 2D map, golden path</li>
+        </ul>
         <div class="gallery">
-          <figure class="g-8"><img src="assets/img/projects/sunken-island/02-golden-path.webp" alt="Blockout from above with the golden path line through the level" loading="lazy" data-zoom><figcaption>The golden path through the blockout.</figcaption></figure>
-          <figure class="g-4 contain"><img src="assets/img/projects/sunken-island/03-2d-map.webp" alt="2D map of the level with combat and puzzle areas marked" loading="lazy" data-zoom><figcaption>2D map with the combat and puzzle areas and the legend.</figcaption></figure>
-          <figure class="g-6"><img src="assets/img/projects/sunken-island/04-courtyard.webp" alt="Courtyard in front of the temple with low walls for cover" loading="lazy" data-zoom><figcaption>The courtyard. Low walls give cover for the first combat.</figcaption></figure>
-          <figure class="g-6"><img src="assets/img/projects/sunken-island/05-temple-gate.webp" alt="Large stone gate of the temple between grid walls" loading="lazy" data-zoom><figcaption>The temple gate frames the goal at the end of the path.</figcaption></figure>
+          <figure class="g-8"><img src="assets/img/projects/sunken-island/02-golden-path.webp" alt="Blockout from above with the golden path line through the level" loading="lazy" data-zoom><figcaption><strong>Golden path.</strong> The route through the blockout.</figcaption></figure>
+          <figure class="g-4 contain"><img src="assets/img/projects/sunken-island/03-2d-map.webp" alt="2D map of the level with combat and puzzle areas marked" loading="lazy" data-zoom><figcaption><strong>2D map.</strong> Combat and puzzle areas with the legend.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/projects/sunken-island/04-courtyard.webp" alt="Courtyard in front of the temple with low walls for cover" loading="lazy" data-zoom><figcaption><strong>Courtyard.</strong> Low walls give cover for the first combat.</figcaption></figure>
+          <figure class="g-6"><img src="assets/img/projects/sunken-island/05-temple-gate.webp" alt="Large stone gate of the temple between grid walls" loading="lazy" data-zoom><figcaption><strong>Temple gate.</strong> It frames the goal at the end of the path.</figcaption></figure>
         </div>
       </section>
 
@@ -115,15 +114,15 @@
       <section class="chapter" id="gameplay">
         <p class="eyebrow"><span class="num">04</span>Gameplay</p>
         <h2>Combat, puzzles and traversal</h2>
-        <div class="read">
-          <p><strong>Items.</strong> The player gets a new item, the grappling hook, which opens the environment for free exploration. The weapons are a rifle and a pistol. Treasures are the collectible items.</p>
-          <p><strong>Puzzles.</strong> Falling platforms, and a pushable object with a pressure plate. The first puzzle area changes into a combat area without warning on the first visit.</p>
-          <p><strong>Combat.</strong> The combat zone supports three different approaches. A second combat area follows the circular concept on a smaller scale and gives a dynamic alternative.</p>
-        </div>
+        <ul class="spaces">
+          <li><strong>Items</strong> Grappling hook for free exploration, rifle, pistol, treasures</li>
+          <li><strong>Puzzles</strong> Falling platforms, a pushable object and a pressure plate</li>
+          <li><strong>Combat</strong> Three approaches per zone, plus a smaller circular arena</li>
+        </ul>
         <div class="gallery">
-          <figure class="g-4"><img src="assets/img/projects/sunken-island/06-cave.webp" alt="Dark cave with water and a single light from above" loading="lazy" data-zoom><figcaption>The jungle abyss. One light from above shows the way out.</figcaption></figure>
-          <figure class="g-4"><img src="assets/img/projects/sunken-island/07-cliff.webp" alt="Grid cliff wall with a sloped path" loading="lazy" data-zoom><figcaption>The rocky slope up to the tower.</figcaption></figure>
-          <figure class="g-4"><img src="assets/img/projects/sunken-island/08-climb.webp" alt="Tall grid walls with yellow climbing ledges" loading="lazy" data-zoom><figcaption>Yellow ledges mark the climbing route.</figcaption></figure>
+          <figure class="g-4"><img src="assets/img/projects/sunken-island/06-cave.webp" alt="Dark cave with water and a single light from above" loading="lazy" data-zoom><figcaption><strong>Jungle abyss.</strong> One light from above shows the way out.</figcaption></figure>
+          <figure class="g-4"><img src="assets/img/projects/sunken-island/07-cliff.webp" alt="Grid cliff wall with a sloped path" loading="lazy" data-zoom><figcaption><strong>Rocky slope.</strong> The climb up to the tower.</figcaption></figure>
+          <figure class="g-4"><img src="assets/img/projects/sunken-island/08-climb.webp" alt="Tall grid walls with yellow climbing ledges" loading="lazy" data-zoom><figcaption><strong>Climbing route.</strong> Yellow ledges mark the way.</figcaption></figure>
         </div>
       </section>
 
@@ -131,11 +130,11 @@
       <section class="chapter" id="postmortem">
         <p class="eyebrow"><span class="num">05</span>Post mortem</p>
         <h2>What worked and what did not</h2>
-        <div class="read">
-          <p><strong>The loop worked, but it became repetitive.</strong> The player always knew where to go. But a constant walk in one direction around a circle became tedious, and it removed the feeling of being lost, which is important for a jungle. It also limited the size of the jungle area.</p>
-          <p><strong>A possible fix:</strong> a tower at the centre that the player moves through or around, along the radius of the circle, with regular visits to its lower levels. This would also solve a second problem: it was difficult to keep the temple interesting from all sides.</p>
-          <p><strong>The linear parts were the strongest.</strong> At the temple entrance the layout becomes more linear, and the basic level design rules were easier to apply. The combat zone and the first puzzle area turned out well.</p>
-          <p><strong>Next time:</strong> I started with a fixed circular outline, and this outline caused the limits above. In future levels, I start more open and let the layout grow from play.</p>
+        <div class="principles">
+          <div><h3>Worked</h3><p>Clear orientation. The linear temple entrance, the combat zone and the first puzzle area.</p></div>
+          <div><h3>Did not work</h3><p>The loop became repetitive, removed the feeling of being lost and limited the jungle.</p></div>
+          <div><h3>Possible fix</h3><p>A central tower to move through along the radius, with visits to its lower levels.</p></div>
+          <div><h3>Next time</h3><p>Start more open and let the layout grow from play.</p></div>
         </div>
         <div class="doc-row">
           <a class="btn primary" href="assets/doc/Sunken_Island_LDD.pdf" target="_blank" rel="noopener">Level Design Document (PDF)</a>
