@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
   <title>Maciej Różewicz | Level Designer, Unreal Engine</title>
   <meta name="description" content="Level design and level art portfolio of Maciej Różewicz. Blockout, light, shape and composition in Unreal Engine 5. Currently building Obversus: Umbra at GrinGate Studios.">
   <meta property="og:title" content="Maciej Różewicz | Level Designer, Unreal Engine">
   <meta property="og:description" content="Blockout, light, shape and composition in Unreal Engine 5.">
-  <meta property="og:image" content="assets/img/ou/04-turbine-hall-catwalks.webp">
+  <meta property="og:image" content="assets/img/ou/20-turbine-hall-gold.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261119a">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261125a">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -34,25 +35,39 @@
 <main id="main">
 
   <!-- ============ HERO ============ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="ink"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
+  </svg>
   <section class="hero" id="top">
-    <div class="hero-media">
-      <img src="assets/img/ou/04-turbine-hall-catwalks.webp" alt="Greybox turbine hall with layered catwalks, lit by a few hard key lights">
-    </div>
     <div class="wrap">
-      <p class="role">Level Designer &middot; Unreal Engine</p>
-      <h1>Maciej Różewicz</h1>
-      <p class="lead">Turning imaginary places into readable spaces.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="obversus-umbra.html">Case study: Obversus: Umbra</a>
-        <a class="btn" href="#work">See the work</a>
-        <a class="btn" href="assets/doc/Maciej_Rozewicz_CV.pdf?v=20261116b" target="_blank" rel="noopener">Resume (PDF)</a>
+      <div class="masthead">
+        <img class="print" src="assets/img/print-hero.webp" alt="" width="640" height="640">
+        <div>
+          <h1 class="wordmark">Maciej<br>Różewicz</h1>
+        </div>
       </div>
-      <dl class="facts">
-        <div><dt>Now</dt><dd>Game &amp; Level Designer, GrinGate Studios</dd></div>
-        <div><dt>Engine</dt><dd>Unreal Engine 5</dd></div>
-        <div><dt>Shipping since</dt><dd>2019, live-service titles</dd></div>
-        <div><dt>Based in</dt><dd>Wrocław, Poland</dd></div>
-      </dl>
+      <div class="marks" aria-hidden="true">
+        <span>level designer <i></i> unreal engine 5</span>
+        <span>greybox <i></i> light, shape, composition</span>
+      </div>
+      <div class="intro">
+        <p class="lead">Turning imaginary places into readable spaces.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="obversus-umbra.html">case study: obversus: umbra</a>
+          <a class="btn" href="#work">see the work</a>
+          <a class="btn" href="assets/doc/Maciej_Rozewicz_CV.pdf?v=20261116b" target="_blank" rel="noopener">resume (pdf)</a>
+        </div>
+        <dl class="facts">
+          <div><dt>now</dt><dd>Game &amp; Level Designer, GrinGate Studios</dd></div>
+          <div><dt>engine</dt><dd>Unreal Engine 5</dd></div>
+          <div><dt>shipping since</dt><dd>2019, live-service titles</dd></div>
+          <div><dt>based in</dt><dd>Wrocław, Poland</dd></div>
+        </dl>
+      </div>
+      <figure class="hero-shot reveal">
+        <div class="frame-img reg"><img src="assets/img/ou/20-turbine-hall-gold.webp" alt="Dark machine hall in Obversus: Umbra, warm window light at the back, pipes and red lamps in the foreground" data-zoom></div>
+        <figcaption><strong>Obversus: Umbra.</strong> Warm light at the back pulls the eye across a dark hall. Greybox, captured in engine.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -69,7 +84,7 @@
 
       <div class="pillars">
         <article class="pillar reveal">
-          <img src="assets/img/ou/01-storage-room.webp" alt="Dark storage room with a single overhead light" data-zoom>
+          <img src="assets/img/ou/24-tiled-windows.webp" alt="Tiled room with a single pool of light on the floor and a warm opening at the back" data-zoom>
           <div class="body">
             <h3>Light</h3>
             <ul class="points">
@@ -80,7 +95,7 @@
           </div>
         </article>
         <article class="pillar reveal">
-          <img src="assets/img/ou/18-dam-supports-exterior.webp" alt="Dam exterior with angled support beams and a lit interior gallery" data-zoom>
+          <img src="assets/img/ou/21-arch-modules.webp" alt="Stacked rows of one modular arch form a wall of windows" data-zoom>
           <div class="body">
             <h3>Shape</h3>
             <ul class="points">
@@ -117,8 +132,8 @@
       </div>
 
       <a class="feature reveal" href="obversus-umbra.html">
-        <div class="feature-media">
-          <img src="assets/img/ou/05-turbine-hall-stairs.webp" alt="Greybox stairway down into the turbine hall">
+        <div class="feature-media reg">
+          <img src="assets/img/ou/22-red-lounge.webp" alt="Waiting room lit by three red light panels, with stairs at the back">
         </div>
         <div class="feature-body">
           <p class="eyebrow">Case study &middot; 2026, in development</p>
@@ -135,12 +150,12 @@
         </div>
       </a>
 
-      <div class="gallery" style="margin-top: 10px;">
-        <figure class="g-8 reveal"><img src="assets/img/ou/02-hangar-red-signals.webp" alt="Hangar with three red signal lights under steel trusses" loading="lazy" data-zoom><figcaption><strong>Hangar.</strong> Three red signals give a focal point in a dark, wide volume.</figcaption></figure>
+      <div class="gallery">
+        <figure class="g-8 reveal"><img src="assets/img/ou/23-storage-shelves.webp" alt="Dark storeroom with shelves, one cold strip light and a red table" loading="lazy" data-zoom><figcaption><strong>Storeroom.</strong> One cold strip light, one red table, the rest stays dark.</figcaption></figure>
         <figure class="g-4 reveal"><img src="assets/img/ou/13-pillar-canyon.webp" alt="Stacked catwalks between huge orange pillars" loading="lazy" data-zoom><figcaption><strong>Pillar shaft.</strong> Warm vertical mass around a hanging catwalk.</figcaption></figure>
+        <figure class="g-4 reveal"><img src="assets/img/ou/02-hangar-red-signals.webp" alt="Hangar with three red signal lights under steel trusses" loading="lazy" data-zoom><figcaption><strong>Hangar.</strong> Three red signals give a focal point in a dark, wide volume.</figcaption></figure>
         <figure class="g-4 reveal"><img src="assets/img/ou/14-flooded-tunnel.webp" alt="Flooded tunnel with bright exit and bodies in red water" loading="lazy" data-zoom><figcaption><strong>Flooded tunnel.</strong> A bright exit at the end of a symmetric frame.</figcaption></figure>
         <figure class="g-4 reveal"><img src="assets/img/ou/12-catwalk-red-alert.webp" alt="Catwalk in red alert lighting, first-person view" loading="lazy" data-zoom><figcaption><strong>Alert state.</strong> The same catwalk, now in red.</figcaption></figure>
-        <figure class="g-4 reveal"><img src="assets/img/ou/10-tiled-maze-lightshaft.webp" alt="Tiled walls with a light shaft from above" loading="lazy" data-zoom><figcaption><strong>Tiled maze.</strong> Low covers under a light shaft.</figcaption></figure>
       </div>
     </div>
   </section>
