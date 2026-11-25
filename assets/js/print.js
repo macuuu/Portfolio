@@ -1,4 +1,4 @@
-// Live dithered print: the arch facade capture is pulled slowly into its own centre, without end.
+// Live dithered print: the arch facade capture is pulled slowly into a focus that follows the cursor.
 // The image holds a smaller copy of itself in the middle, so one zoom step loops back to the start.
 (function () {
   "use strict";
@@ -15,7 +15,7 @@
   var TEX = 256;                          // texture size in pixels
   var N = 128;                            // output resolution, scaled up with pixelated rendering
   var K = 2.6;                            // the copy in the middle is 1/K of the frame
-  var CYCLE = 16000;                      // milliseconds for one zoom step: slow on purpose
+  var CYCLE = 30000;                      // milliseconds for one zoom step: slow on purpose
 
   canvas.width = N;
   canvas.height = N;
@@ -47,38 +47,52 @@
     return tex[y * TEX + x];
   }
 
-  // Fisheye pull: the radius is bent with a power curve, so the middle reads deeper copies
-  // and everything seems to drain into one point. Corners fall outside and stay dark.
-  var GAMMA = 1.9;                        // above 1: stronger pull into the centre
-  var STREAKS = 9;                        // samples along the radius, they smear the image into rays
-  var SMEAR = 0.11;                       // distance between the streak samples
-  var BX = new Float32Array(N * N), BY = new Float32Array(N * N), V = new Float32Array(N * N);
-  for (var by = 0, bi = 0; by < N; by++) {
-    for (var bx = 0; bx < N; bx++, bi++) {
-      var qx = (bx + 0.5) / N - 0.5, qy = (by + 0.5) / N - 0.5;
-      var rn = Math.sqrt(qx * qx + qy * qy) / 0.5;
-      var f = rn > 0 ? Math.pow(rn, GAMMA - 1) : 0;
-      BX[bi] = qx * f;
-      BY[bi] = qy * f;
-      V[bi] = Math.max(0, 1.9 - rn * 1.5); // bright core, dark edge around the rays
-    }
-  }
+  // Fisheye pull: the radius around the focus is bent with a power curve, so the focus reads
+  // deeper copies and the image seems to drain into it. The focus follows the cursor slowly,
+  // like the eye of a designer who watches the player move through the level.
+  var GAMMA = 1.6;                        // above 1: stronger pull into the focus
+  var STREAKS = 4;                        // samples along the radius, short rays that keep the shape
+  var SMEAR = 0.04;                       // distance between the streak samples
+  var FOLLOW = 0.025;                     // how fast the focus moves to the cursor, per frame
+  var REACH = 0.28;                       // how far the focus can move from the middle
+
+  var fx = 0, fy = 0, tx = 0, ty = 0, lastMove = -1e9;
+  window.addEventListener("pointermove", function (e) {
+    var r = canvas.getBoundingClientRect();
+    if (!r.width) return;
+    tx = Math.max(-REACH, Math.min(REACH, (e.clientX - r.left) / r.width - 0.5));
+    ty = Math.max(-REACH, Math.min(REACH, (e.clientY - r.top) / r.height - 0.5));
+    lastMove = performance.now();
+  }, { passive: true });
 
   function render(t) {
     var phase = reduce ? 0.35 : (t % CYCLE) / CYCLE;
     var z = Math.pow(K, 1 - phase);        // K -> 1: content shrinks into the centre, then loops seamlessly
-    var o = 0, b = 0;
+
+    // No cursor for a while (or a touch screen): the eye drifts slowly on its own
+    if (t - lastMove > 4000) {
+      tx = Math.sin(t / 7300) * REACH * 0.6;
+      ty = Math.sin(t / 5100 + 1) * REACH * 0.45;
+    }
+    fx += (tx - fx) * FOLLOW;
+    fy += (ty - fy) * FOLLOW;
+
+    var o = 0;
     for (var y = 0; y < N; y++) {
-      for (var x = 0; x < N; x++, b++) {
-        var sx = BX[b] / z, sy = BY[b] / z;
+      var dy = (y + 0.5) / N - 0.5 - fy;
+      for (var x = 0; x < N; x++) {
+        var dx = (x + 0.5) / N - 0.5 - fx;
+        var rn = Math.sqrt(dx * dx + dy * dy) * 2;
+        var f = rn > 0 ? Math.pow(rn, GAMMA - 1) / z : 0;
+        var sx = dx * f, sy = dy * f;
         var lum = 0, wsum = 0, w = 1;
         for (var s = 0; s < STREAKS; s++) {
           var k = 1 + s * SMEAR;          // the trail lies outward: the image moves in, rays point out
           lum += sample(sx * k, sy * k) * w;
           wsum += w;
-          w *= 0.88;
+          w *= 0.8;
         }
-        lum = lum / wsum * V[b];
+        lum = lum / wsum * Math.max(0, Math.min(1.2, 1.45 - rn * 0.75)); // bright focus, darker edge
         var on = lum > T[(y & 7) * 8 + (x & 7)];
         px[o] = on ? 255 : 0;
         px[o + 1] = on ? 42 : 0;
