@@ -36,7 +36,7 @@
   // Every copy, the outer one too, has the same thin dark frame: the eye reads the depth,
   // and the image stays exactly self-similar, so the loop has no seam.
   function sample(qx, qy) {
-    for (var depth = 0; depth < 9; depth++) {
+    for (var depth = 0; depth < 14; depth++) {
       var m = Math.max(Math.abs(qx), Math.abs(qy));
       if (m > 0.47) return 0;
       if (m >= EDGE) break;
@@ -47,15 +47,38 @@
     return tex[y * TEX + x];
   }
 
+  // Fisheye pull: the radius is bent with a power curve, so the middle reads deeper copies
+  // and everything seems to drain into one point. Corners fall outside and stay dark.
+  var GAMMA = 1.9;                        // above 1: stronger pull into the centre
+  var STREAKS = 9;                        // samples along the radius, they smear the image into rays
+  var SMEAR = 0.11;                       // distance between the streak samples
+  var BX = new Float32Array(N * N), BY = new Float32Array(N * N), V = new Float32Array(N * N);
+  for (var by = 0, bi = 0; by < N; by++) {
+    for (var bx = 0; bx < N; bx++, bi++) {
+      var qx = (bx + 0.5) / N - 0.5, qy = (by + 0.5) / N - 0.5;
+      var rn = Math.sqrt(qx * qx + qy * qy) / 0.5;
+      var f = rn > 0 ? Math.pow(rn, GAMMA - 1) : 0;
+      BX[bi] = qx * f;
+      BY[bi] = qy * f;
+      V[bi] = Math.max(0, 1.9 - rn * 1.5); // bright core, dark edge around the rays
+    }
+  }
+
   function render(t) {
     var phase = reduce ? 0.35 : (t % CYCLE) / CYCLE;
     var z = Math.pow(K, 1 - phase);        // K -> 1: content shrinks into the centre, then loops seamlessly
-    var o = 0;
+    var o = 0, b = 0;
     for (var y = 0; y < N; y++) {
-      var py = ((y + 0.5) / N - 0.5) / z;
-      for (var x = 0; x < N; x++) {
-        var pxq = ((x + 0.5) / N - 0.5) / z;
-        var lum = sample(pxq, py);
+      for (var x = 0; x < N; x++, b++) {
+        var sx = BX[b] / z, sy = BY[b] / z;
+        var lum = 0, wsum = 0, w = 1;
+        for (var s = 0; s < STREAKS; s++) {
+          var k = 1 + s * SMEAR;          // the trail lies outward: the image moves in, rays point out
+          lum += sample(sx * k, sy * k) * w;
+          wsum += w;
+          w *= 0.88;
+        }
+        lum = lum / wsum * V[b];
         var on = lum > T[(y & 7) * 8 + (x & 7)];
         px[o] = on ? 255 : 0;
         px[o + 1] = on ? 42 : 0;
