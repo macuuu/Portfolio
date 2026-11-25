@@ -48,7 +48,7 @@ h3 { font: 500 14px/1.5 var(--font-text); text-transform: lowercase; margin-bott
 /* Layout: a centred reading column, wide items break out to the bleed width */
 .wrap { width: min(100% - 32px, var(--bleed)); margin-inline: auto; }
 .wrap > *, .chapter > * { max-width: var(--col); margin-left: auto; margin-right: auto; }
-.wrap > .gallery, .wrap > .pillars, .wrap > .cards, .wrap > .feature, .wrap > .hero-shot, .wrap > .signal-scene, .wrap > .signal-log,
+.wrap > .gallery, .wrap > .pillars, .wrap > .cards, .wrap > .feature, .wrap > .hero-shot, 
 .chapter > .gallery, .chapter > .video, .wrap > .case-layout, .case-layout, .case-layout > article { max-width: none; }
 
 /* Header */
@@ -127,26 +127,8 @@ h3 { font: 500 14px/1.5 var(--font-text); text-transform: lowercase; margin-bott
 .hero-shot figcaption { margin-top: 10px; }
 @media (max-width: 620px) { .masthead { grid-template-columns: 1fr; gap: var(--s2); } .facts { grid-template-columns: 1fr; } }
 
-/* Signal diagram (home hero) */
-.signal-scene { position: relative; display: grid; grid-template-columns: 150px 190px minmax(0, 1fr); gap: 64px; align-items: center; margin-top: var(--s4); cursor: pointer; user-select: none; }
-.signal-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; z-index: 2; }
-.signal-col { min-width: 0; position: relative; z-index: 1; }
-.node { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; padding: 10px 14px; border: 1px solid var(--line); background: #000; font-size: 12.5px; transition: border-color .35s, background .35s; }
-.node::after { content: ""; position: absolute; inset: 3px; border: 1px solid var(--line-in); pointer-events: none; transition: border-color .35s; }
-.node-name { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-weight: 500; white-space: nowrap; }
-.node-name svg { color: var(--faint); flex: none; transition: color .35s; }
-.node-detail { position: relative; z-index: 1; color: var(--faint); font-size: 11.5px; white-space: nowrap; }
-.node canvas { position: absolute; inset: 1px; width: calc(100% - 2px); height: calc(100% - 2px); image-rendering: pixelated; pointer-events: none; }
-.node.is-hot { border-color: var(--ink); background: #ff2a2a0d; }
-.node.is-hot::after { border-color: #ff2a2a40; }
-.node.is-hot .node-name, .node.is-hot .node-name svg { color: #fff; }
-.node.is-hot .node-detail { color: var(--ink); }
-.signal-label { position: absolute; bottom: 100%; left: 0; margin: 0 0 8px; font-size: 11px; color: var(--faint); text-transform: lowercase; }
-.signal-box { position: relative; display: grid; gap: 10px; padding: 16px 16px 16px 72px; border: 1px solid var(--line); background: #ffffff02; }
-.signal-action { color: var(--ink); white-space: nowrap; transition: opacity .3s; }
-.signal-route .node-name, .signal-route .node-detail { transition: opacity .25s; }
-.signal-route.swap .node-name, .signal-route.swap .node-detail, .signal-action.swap { opacity: 0; }
-.signal-log { max-width: var(--bleed); margin: 22px auto 0; min-height: 1.6em; font-size: 12px; color: var(--faint); text-transform: lowercase; }
+/* Typing log (home hero): the player acts, the level answers */
+.signal-log { margin-top: var(--s4); margin-bottom: 0; min-height: 1.6em; font-size: 12px; color: var(--faint); text-transform: lowercase; }
 .signal-log::before { content: "> "; color: var(--ink-dim); }
 .signal-log .log-act { color: var(--text); }
 .signal-log i { font-style: normal; color: var(--ink-dim); margin: 0 10px; }
@@ -154,13 +136,6 @@ h3 { font: 500 14px/1.5 var(--font-text); text-transform: lowercase; margin-bott
 .signal-log:has(.log-res:empty) i { visibility: hidden; }
 .signal-log .caret { display: inline-block; width: .6em; height: 1em; margin-left: 2px; vertical-align: -2px; background: var(--ink); animation: caret 1s steps(1) infinite; }
 @keyframes caret { 50% { opacity: 0; } }
-@media (max-width: 760px) {
-  .signal-scene { grid-template-columns: 52px minmax(96px, 120px) minmax(0, 1fr); gap: 18px; }
-  .node[data-node="player"] { justify-content: center; padding: 0; }
-  .node[data-node="player"] .node-label, .node-detail { display: none; }
-  .signal-box { padding: 12px 12px 12px 26px; gap: 8px; }
-  .signal-route { min-height: 44px; padding: 8px 10px; }
-}
 
 /* Framed figures */
 figure { margin: 0; }
