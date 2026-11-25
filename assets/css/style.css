@@ -129,7 +129,7 @@ h3 { font: 500 14px/1.5 var(--font-text); text-transform: lowercase; margin-bott
 @media (max-width: 620px) { .masthead { grid-template-columns: 1fr; gap: var(--s2); } .facts { grid-template-columns: 1fr; } }
 
 /* Typing log (home hero): the player acts, the level answers */
-.signal-log { margin-top: 0; margin-bottom: var(--s4); min-height: 1.6em; font-size: 12px; color: var(--faint); text-transform: lowercase; }
+.signal-log { margin: 0; min-height: 3.4em; max-width: 620px; font-size: 15px; line-height: 1.7; color: var(--faint); text-transform: lowercase; }
 .signal-log::before { content: "> "; color: var(--ink-dim); }
 .signal-log .log-act { color: var(--text); }
 .signal-log i { font-style: normal; color: var(--ink-dim); margin: 0 10px; }
