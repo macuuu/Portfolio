@@ -95,6 +95,24 @@
     });
   }
 
+  // Contact: flash the contact buttons when the visitor asks for them
+  var contactLinks = document.querySelector("#contact .contact-links");
+  function flashContact(delay) {
+    if (!contactLinks) return;
+    setTimeout(function () {
+      contactLinks.classList.remove("flash");
+      void contactLinks.offsetWidth; // restart the animation
+      contactLinks.classList.add("flash");
+    }, delay);
+  }
+  if (contactLinks) {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href="#contact"]');
+      if (a) flashContact(450);
+    });
+    if (location.hash === "#contact") flashContact(700);
+  }
+
   // Current year in footer
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
