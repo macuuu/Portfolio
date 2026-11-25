@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Maciej Różewicz | Senior Level Designer, Mobile Games</title>
+  <meta name="description" content="Senior Level Designer with 7+ years in mobile free-to-play games: LiveOps content, difficulty curves and data-driven level design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --accent: #1d4ed8;
+      --accent-soft: #e8eefc;
+      --text: #1f2937;
+      --muted: #5b6474;
+      --line: #e3e7ee;
+      --bg-alt: #f6f8fb;
+      --radius: 10px;
+      --col: 1080px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font: 400 16px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: var(--accent); }
+    h1, h2, h3 { color: var(--navy); line-height: 1.2; margin: 0; }
+    p { margin: 0; }
+    .wrap { max-width: var(--col); margin: 0 auto; padding: 0 24px; }
+
+    /* Top bar */
+    .topbar { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+    .brand { font-weight: 700; color: var(--navy); letter-spacing: -.01em; }
+    .brand span { font-weight: 500; color: var(--muted); margin-left: 8px; }
+    .topnav { display: flex; gap: 24px; align-items: center; }
+    .topnav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .topnav a:hover { color: var(--navy); }
+    .topnav a.btn, .topnav a.btn:hover { color: #fff; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid var(--accent); transition: background .15s, color .15s; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #1a43bd; }
+    .btn-ghost { background: #fff; color: var(--accent); }
+    .btn-ghost:hover { background: var(--accent-soft); }
+    .btn-sm { padding: 8px 14px; font-size: 14px; }
+    .btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* Hero */
+    .hero { padding: 72px 0 56px; background: linear-gradient(180deg, var(--bg-alt), #fff); border-bottom: 1px solid var(--line); }
+    .hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; }
+    .kicker { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 5px 10px; border-radius: 999px; }
+    .hero h1 { font-size: clamp(34px, 5vw, 52px); font-weight: 700; letter-spacing: -.025em; margin-top: 18px; }
+    .hero .lead { font-size: 19px; color: var(--muted); margin-top: 18px; max-width: 560px; }
+    .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .hero-media { border-radius: 14px; overflow: hidden; box-shadow: 0 20px 50px rgba(11,31,58,.16); border: 1px solid var(--line); }
+
+    /* Metrics */
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+    .metric { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+    .metric b { display: block; font-size: 30px; font-weight: 700; color: var(--navy); letter-spacing: -.02em; }
+    .metric span { font-size: 14px; color: var(--muted); }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    section.alt { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .sec-head { max-width: 720px; margin-bottom: 40px; }
+    .sec-head .label { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+    .sec-head h2 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 700; letter-spacing: -.02em; margin-top: 10px; }
+    .sec-head p { color: var(--muted); font-size: 17px; margin-top: 14px; }
+
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+    .card .ico { width: 40px; height: 40px; border-radius: 8px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; font-weight: 700; font-size: 15px; }
+    .card h3 { font-size: 18px; margin-top: 16px; }
+    .card p { color: var(--muted); font-size: 15px; margin-top: 8px; }
+
+    /* Experience */
+    .jobs { display: grid; gap: 20px; }
+    .job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+    .job .when { font-size: 14px; color: var(--muted); font-weight: 500; }
+    .job .co { font-weight: 600; color: var(--navy); margin-top: 6px; }
+    .job .tag { display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 3px 8px; border-radius: 6px; }
+    .job h3 { font-size: 20px; }
+    .job .game { color: var(--muted); font-size: 15px; margin-top: 4px; }
+    .job ul { margin: 14px 0 0; padding-left: 20px; }
+    .job li { margin-top: 6px; }
+    .job li::marker { color: var(--accent); }
+
+    /* Projects */
+    .project { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .project + .project { margin-top: 72px; padding-top: 72px; border-top: 1px solid var(--line); }
+    .project h3 { font-size: 26px; letter-spacing: -.015em; }
+    .project .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .chip { font-size: 13px; font-weight: 500; color: var(--navy); background: var(--bg-alt); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px; }
+    .project p { color: var(--muted); margin-top: 16px; }
+    .project ul { margin: 16px 0 0; padding-left: 20px; }
+    .project li { margin-top: 6px; }
+    .project li::marker { color: var(--accent); }
+    .stores { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+    .shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .shots figure, .levels figure { margin: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: var(--bg-alt); cursor: zoom-in; }
+    .shots .wide { grid-column: span 2; }
+    .shots img, .levels img { width: 100%; height: 100%; object-fit: cover; transition: transform .25s; }
+    .shots figure:hover img, .levels figure:hover img { transform: scale(1.03); }
+    .levels { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 32px; }
+    .levels figure { aspect-ratio: 9 / 17; }
+    .levels-note { font-size: 14px; color: var(--muted); margin-top: 12px; }
+
+    /* Fit */
+    .fit { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .fit .card h3 { margin-top: 0; }
+    .note { margin-top: 24px; font-size: 15px; color: var(--muted); border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .skills h3 { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+    .skills ul { list-style: none; margin: 12px 0 0; padding: 0; }
+    .skills li { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--navy); }
+
+    /* Contact */
+    .contact { text-align: center; background: var(--navy); color: #fff; }
+    .contact h2 { color: #fff; font-size: clamp(28px, 4vw, 40px); letter-spacing: -.02em; }
+    .contact p { color: #c4cddc; margin: 14px auto 0; max-width: 560px; font-size: 17px; }
+    .contact .btn { margin-top: 28px; background: #fff; color: var(--navy); border-color: #fff; }
+    .contact .btn:hover { background: var(--accent-soft); }
+    footer { background: var(--navy); color: #8b97ab; font-size: 13px; text-align: center; padding: 0 0 32px; }
+
+    /* Lightbox */
+    .lb { position: fixed; inset: 0; z-index: 50; background: rgba(11,31,58,.9); display: none; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+    .lb.open { display: flex; }
+    .lb img { max-width: 100%; max-height: 100%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+
+    @media (max-width: 900px) {
+      .hero-grid, .project, .job { grid-template-columns: 1fr; gap: 24px; }
+      .metrics, .skills { grid-template-columns: repeat(2, 1fr); }
+      .cards, .fit { grid-template-columns: 1fr; }
+      .levels { grid-template-columns: repeat(3, 1fr); }
+      .topnav a:not(.btn) { display: none; }
+      section { padding: 56px 0; }
+      .hero { padding: 48px 0 40px; }
+    }
+    @media (max-width: 480px) {
+      .brand span { display: none; }
+      .metric b { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">Maciej Różewicz<span>Senior Level Designer</span></div>
+    <nav class="topnav" aria-label="Page">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a class="btn btn-primary btn-sm" href="https://www.linkedin.com/in/maciej-r%C3%B3%C5%BCewicz-6a57a228a/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="kicker">Mobile free-to-play &middot; LiveOps</span>
+          <h1>Senior Level Designer for mobile games</h1>
+          <p class="lead">7+ years of levels for live-service mobile games with millions of players. I design content that keeps players engaged session after session, and I change it from data.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/maciej-r%C3%B3%C5%BCewicz-6a57a228a/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg>
+              Contact me on LinkedIn
+            </a>
+            <a class="btn btn-ghost" href="#projects">See the projects</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="assets/img/projects/puzzle-games/tp-01.webp" alt="Traffic Puzzle level with a plane and rows of coloured cars" width="997" height="560">
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><b>7+ years</b><span>in mobile game and level design</span></div>
+        <div class="metric"><b>Thousands</b><span>of shipped puzzle levels</span></div>
+        <div class="metric"><b>10M+</b><span>players on Traffic Puzzle</span></div>
+        <div class="metric"><b>100M+</b><span>downloads of Best Fiends</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="value">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">What I bring</p>
+        <h2>Content that holds players and supports the business</h2>
+        <p>In a live-service game, each level is part of the economy, the session and the retention curve. I design with these goals in mind.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="ico">01</div>
+          <h3>Difficulty and pacing</h3>
+          <p>Difficulty curves for the full session and the full content cycle, not for one level. Easy wins, tension peaks and recovery in the correct order.</p>
+        </div>
+        <div class="card">
+          <div class="ico">02</div>
+          <h3>LiveOps content</h3>
+          <p>A steady flow of new levels and special content for live events. Content pacing and level structures that fit the LiveOps economy.</p>
+        </div>
+        <div class="card">
+          <div class="ico">03</div>
+          <h3>Data-driven iteration</h3>
+          <p>I change levels from retention and funnel data. Small changes, tested often. I trust the data more than my own taste.</p>
+        </div>
+        <div class="card">
+          <div class="ico">04</div>
+          <h3>Onboarding</h3>
+          <p>New mechanics that the player learns through play. Each new rule comes on a clear board first, then in combination with others.</p>
+        </div>
+        <div class="card">
+          <div class="ico">05</div>
+          <h3>Premium content</h3>
+          <p>I owned Special Level Content for the highest-value product. Content for engaged, high-value players needs extra care and polish.</p>
+        </div>
+        <div class="card">
+          <div class="ico">06</div>
+          <h3>Team and standards</h3>
+          <p>Review standards, peer reviews and mentoring for junior designers. Close work with product, art, engineering and analytics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Experience</p>
+        <h2>Six years in mobile free-to-play</h2>
+        <p>From the first prototype to LiveOps in two puzzle games, at a social casino publisher and at a top mobile publisher.</p>
+      </div>
+      <div class="jobs">
+        <article class="job">
+          <div>
+            <p class="when">2024 to 2025</p>
+            <p class="co">Playtika</p>
+            <span class="tag">Top mobile publisher</span>
+          </div>
+          <div>
+            <h3>Level Designer</h3>
+            <p class="game">Best Fiends &middot; match-3 &middot; 100M+ downloads</p>
+            <ul>
+              <li>Designed gameplay levels in the Unity level editor for an established live service.</li>
+              <li>Changed level structures from retention data.</li>
+              <li>Worked on content design and on the development of the level editor.</li>
+              <li>Designed new features in a cross-functional team.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div>
+            <p class="when">2022 to 2023</p>
+            <p class="co">Huuuge Games</p>
+            <span class="tag">Social casino publisher</span>
+          </div>
+          <div>
+            <h3>Senior Level Designer</h3>
+            <p class="game">Traffic Puzzle &middot; 10M+ players</p>
+            <ul>
+              <li>Owned Special Level Content for the highest-value product.</li>
+              <li>Set the LiveOps economy, content pacing and level structures.</li>
+              <li>Set review standards, ran peer reviews and mentored junior designers.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div>
+            <p class="when">2019 to 2022</p>
+            <p class="co">Picadilla Games</p>
+            <span class="tag">Acquired by Huuuge Games</span>
+          </div>
+          <div>
+            <h3>Game Designer</h3>
+            <p class="game">Traffic Puzzle</p>
+            <ul>
+              <li>Led the level design direction from early development to LiveOps.</li>
+              <li>Designed new mechanics and how the player learns them.</li>
+              <li>Built difficulty curves for the full content cycle.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Projects</p>
+        <h2>Shipped games</h2>
+      </div>
+
+      <div class="project">
+        <div>
+          <h3>Traffic Puzzle</h3>
+          <div class="meta">
+            <span class="chip">Picadilla Games, Huuuge Games</span>
+            <span class="chip">2019 to 2023</span>
+            <span class="chip">10M+ players</span>
+          </div>
+          <p>My first professional project. I was on it from the prototype to LiveOps, first as Game Designer, then as Senior Level Designer.</p>
+          <ul>
+            <li>New rules on the same grid: trains, trucks, parking.</li>
+            <li>A move limit that sets the difficulty of each level.</li>
+            <li>Dense late-game boards and tall levels that the player scrolls.</li>
+          </ul>
+          <div class="stores">
+            <a class="btn btn-ghost btn-sm" href="https://play.google.com/store/apps/details?id=com.picadilla.beepbeepvroom" target="_blank" rel="noopener">Google Play</a>
+            <a class="btn btn-ghost btn-sm" href="https://apps.apple.com/us/app/traffic-puzzle-car-jam-escape/id1471999779" target="_blank" rel="noopener">App Store</a>
+          </div>
+        </div>
+        <div class="shots">
+          <figure class="wide"><img src="assets/img/projects/puzzle-games/tp-02.webp" alt="Traffic Puzzle level with a train track and rows of cars" loading="lazy" data-zoom></figure>
+          <figure><img src="assets/img/projects/puzzle-games/tp-04.webp" alt="Traffic Puzzle level with a colourful bus and moves counter" loading="lazy" data-zoom></figure>
+          <figure><img src="assets/img/projects/puzzle-games/tp-06.webp" alt="Tall Traffic Puzzle level with roads and cars" loading="lazy" data-zoom></figure>
+        </div>
+      </div>
+
+      <div class="project">
+        <div>
+          <h3>Best Fiends</h3>
+          <div class="meta">
+            <span class="chip">Playtika</span>
+            <span class="chip">2024 to 2025</span>
+            <span class="chip">100M+ downloads</span>
+          </div>
+          <p>Design in an established live service with a large, engaged player base. Board shape, blockers and tile colours set the goal and the difficulty of each level.</p>
+          <ul>
+            <li>Gameplay levels in the Unity level editor.</li>
+            <li>Level structures changed from retention data.</li>
+            <li>New feature design with product, art and engineering.</li>
+          </ul>
+          <div class="stores">
+            <a class="btn btn-ghost btn-sm" href="https://play.google.com/store/apps/details?id=com.Seriously.BestFiends" target="_blank" rel="noopener">Google Play</a>
+            <a class="btn btn-ghost btn-sm" href="https://apps.apple.com/us/app/best-fiends-match-3-puzzles/id868013618" target="_blank" rel="noopener">App Store</a>
+          </div>
+        </div>
+        <div class="shots">
+          <figure class="wide"><img src="assets/img/projects/puzzle-games/bf-01.webp" alt="Best Fiends key art" loading="lazy" data-zoom></figure>
+        </div>
+      </div>
+
+      <div class="levels">
+        <figure><img src="assets/img/projects/puzzle-games/bf-levels/02.webp" alt="Best Fiends level layout" loading="lazy" data-zoom></figure>
+        <figure><img src="assets/img/projects/puzzle-games/bf-levels/05.webp" alt="Best Fiends level layout" loading="lazy" data-zoom></figure>
+        <figure><img src="assets/img/projects/puzzle-games/bf-levels/08.webp" alt="Best Fiends level layout" loading="lazy" data-zoom></figure>
+        <figure><img src="assets/img/projects/puzzle-games/bf-levels/11.webp" alt="Best Fiends level layout" loading="lazy" data-zoom></figure>
+        <figure><img src="assets/img/projects/puzzle-games/bf-levels/14.webp" alt="Best Fiends level layout" loading="lazy" data-zoom></figure>
+        <figure><img src="assets/img/projects/puzzle-games/bf-levels/17.webp" alt="Best Fiends level layout" loading="lazy" data-zoom></figure>
+      </div>
+      <p class="levels-note">Best Fiends board layouts that I designed in 2025.</p>
+    </div>
+  </section>
+
+  <section class="alt" id="fit">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Casino and social casino</p>
+        <h2>Skills that transfer to casino games</h2>
+        <p>Puzzle and casino games share the same core: short sessions, a steady flow of content, a clear reward loop and decisions based on data.</p>
+      </div>
+      <div class="fit">
+        <div class="card">
+          <h3>Session and reward pacing</h3>
+          <p>I plan when the player wins, when the tension goes up and when the reward comes. The same skill shapes slot feature pacing and bonus rounds.</p>
+        </div>
+        <div class="card">
+          <h3>Event and LiveOps content</h3>
+          <p>I delivered content on a fixed LiveOps schedule. Casino games run on the same cycle of events, seasons and limited-time content.</p>
+        </div>
+        <div class="card">
+          <h3>Economy awareness</h3>
+          <p>Levels in free-to-play games are part of the economy: moves, boosters and rewards. I design content that respects the balance of the economy.</p>
+        </div>
+        <div class="card">
+          <h3>KPI-driven work</h3>
+          <p>Retention and funnel data tell me what to change. I am used to working with analysts and product managers on clear goals.</p>
+        </div>
+      </div>
+      <p class="note">I have not shipped a casino title yet. I worked at Huuuge Games, a social casino publisher, and I know the live-service tools and processes that casino studios use.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Skills</p>
+        <h2>Tools and areas</h2>
+      </div>
+      <div class="skills">
+        <div>
+          <h3>Design</h3>
+          <ul>
+            <li>Level design</li>
+            <li>Difficulty curves</li>
+            <li>Onboarding</li>
+            <li>Feature design</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Live service</h3>
+          <ul>
+            <li>LiveOps content</li>
+            <li>Content pacing</li>
+            <li>Economy and rewards</li>
+            <li>Data-driven iteration</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <ul>
+            <li>Unity, level editors</li>
+            <li>Unreal Engine 5</li>
+            <li>Figma, Adobe</li>
+            <li>Git, Perforce</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Team</h3>
+          <ul>
+            <li>Mentoring</li>
+            <li>Review standards</li>
+            <li>Cross-functional work</li>
+            <li>English, Polish</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Let's talk about your next game</h2>
+      <p>I am open to Senior Level Designer roles in mobile and casino games. Send me a message on LinkedIn.</p>
+      <a class="btn" href="https://www.linkedin.com/in/maciej-r%C3%B3%C5%BCewicz-6a57a228a/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg>
+        Message me on LinkedIn
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>&copy; 2026 Maciej Różewicz</footer>
+
+<div class="lb" aria-hidden="true"><img alt=""></div>
+<script>
+  (function () {
+    var lb = document.querySelector(".lb"), big = lb.querySelector("img");
+    document.querySelectorAll("[data-zoom]").forEach(function (img) {
+      img.addEventListener("click", function () { big.src = img.currentSrc || img.src; big.alt = img.alt; lb.classList.add("open"); });
+    });
+    lb.addEventListener("click", function () { lb.classList.remove("open"); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") lb.classList.remove("open"); });
+  })();
+</script>
+</body>
+</html>
