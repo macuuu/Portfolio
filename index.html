@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261125b">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261125c">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -49,6 +49,23 @@
       <div class="marks" aria-hidden="true">
         <span>level designer <i></i> unreal engine 5</span>
         <span>greybox <i></i> light, shape, composition</span>
+      </div>
+      <div class="signal-scene" role="img" aria-label="Diagram: the player reads a greybox through light, shape and composition">
+        <svg class="signal-lines" aria-hidden="true"></svg>
+        <div class="signal-col">
+          <div class="node" data-node="player"><span class="node-name"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M1 8s2.6-4.5 7-4.5S15 8 15 8s-2.6 4.5-7 4.5S1 8 1 8z"/><circle cx="8" cy="8" r="2"/></svg><span class="node-label">player</span></span></div>
+        </div>
+        <div class="signal-col">
+          <div class="node" data-node="greybox"><canvas aria-hidden="true"></canvas><span class="node-name"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M8 1.5l5.5 3v7L8 14.5l-5.5-3v-7z"/><path d="M2.5 4.5L8 7.5l5.5-3M8 7.5v7"/></svg><span class="node-label">greybox</span></span><span class="node-detail">ue5</span></div>
+        </div>
+        <div class="signal-col">
+          <p class="signal-label">readable space</p>
+          <div class="signal-box">
+            <div class="node signal-route"><span class="node-name">light</span><span class="node-detail">one pool, go here</span></div>
+            <div class="node signal-route"><span class="node-name">shape</span><span class="node-detail">one dominant form</span></div>
+            <div class="node signal-route"><span class="node-name">composition</span><span class="node-detail">frames and lines</span></div>
+          </div>
+        </div>
       </div>
       <div class="intro">
         <p class="lead">Turning imaginary places into readable spaces.</p>
@@ -367,5 +384,6 @@
 
 <script src="assets/js/main.js?v=20261116b"></script>
 <script src="assets/js/print.js?v=20261125a"></script>
+<script src="assets/js/diagram.js?v=20261125a"></script>
 </body>
 </html>
