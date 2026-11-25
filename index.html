@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261126a">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261126b">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -50,23 +50,25 @@
         <span>level designer <i></i> unreal engine 5</span>
         <span>greybox <i></i> light, shape, composition</span>
       </div>
-      <div class="signal-scene" role="img" aria-label="Diagram: the player reads a greybox through light, shape and composition">
+      <div class="signal-scene" role="img" aria-label="Diagram: the player acts, the level answers. Example: the player gets lost, a light shaft marks the way.">
         <svg class="signal-lines" aria-hidden="true"></svg>
         <div class="signal-col">
+          <p class="signal-label signal-action" aria-hidden="true">gets lost</p>
           <div class="node" data-node="player"><span class="node-name"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M1 8s2.6-4.5 7-4.5S15 8 15 8s-2.6 4.5-7 4.5S1 8 1 8z"/><circle cx="8" cy="8" r="2"/></svg><span class="node-label">player</span></span></div>
         </div>
         <div class="signal-col">
-          <div class="node" data-node="greybox"><canvas aria-hidden="true"></canvas><span class="node-name"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M8 1.5l5.5 3v7L8 14.5l-5.5-3v-7z"/><path d="M2.5 4.5L8 7.5l5.5-3M8 7.5v7"/></svg><span class="node-label">greybox</span></span><span class="node-detail">ue5</span></div>
+          <div class="node" data-node="level"><canvas aria-hidden="true"></canvas><span class="node-name"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M8 1.5l5.5 3v7L8 14.5l-5.5-3v-7z"/><path d="M2.5 4.5L8 7.5l5.5-3M8 7.5v7"/></svg><span class="node-label">level</span></span><span class="node-detail">ue5</span></div>
         </div>
         <div class="signal-col">
-          <p class="signal-label">readable space</p>
+          <p class="signal-label">the level answers</p>
           <div class="signal-box">
-            <div class="node signal-route"><span class="node-name">light</span><span class="node-detail">one pool, go here</span></div>
-            <div class="node signal-route"><span class="node-name">shape</span><span class="node-detail">one dominant form</span></div>
-            <div class="node signal-route"><span class="node-name">composition</span><span class="node-detail">frames and lines</span></div>
+            <div class="node signal-route"><span class="node-name">guide</span><span class="node-detail">a light shaft marks the way</span></div>
+            <div class="node signal-route"><span class="node-name">reward</span><span class="node-detail">a hidden view of the dam</span></div>
+            <div class="node signal-route"><span class="node-name">fair</span><span class="node-detail">cover at the right height</span></div>
           </div>
         </div>
       </div>
+      <p class="signal-log" aria-hidden="true"><span class="log-act">player gets lost</span><i>&rarr;</i><span class="log-res">a light shaft marks the way</span></p>
       <div class="intro">
         <p class="lead">Turning imaginary places into readable spaces.</p>
         <div class="cta-row">
@@ -382,6 +384,6 @@
 
 <script src="assets/js/main.js?v=20261126a"></script>
 <script src="assets/js/print.js?v=20261125a"></script>
-<script src="assets/js/diagram.js?v=20261125a"></script>
+<script src="assets/js/diagram.js?v=20261126a"></script>
 </body>
 </html>
