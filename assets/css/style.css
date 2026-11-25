@@ -32,6 +32,7 @@ body {
 }
 ::selection { background: var(--ink); color: #000; }
 img { display: block; max-width: 100%; height: auto; }
+[hidden] { display: none !important; }
 a { color: var(--text); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; transition: color .15s, text-decoration-color .15s; }
 a:hover { color: #fff; text-decoration-color: var(--ink); }
 strong { color: var(--text); font-weight: 500; }
@@ -108,7 +109,7 @@ h3 { font: 500 14px/1.5 var(--font-text); text-transform: lowercase; margin-bott
 .masthead .print canvas { display: none; }
 .masthead .print.is-live canvas { display: block; }
 .wordmark {
-  font: 400 clamp(52px, 11.5vw, 112px)/1 var(--font-display); color: var(--ink); text-transform: uppercase;
+  font: 400 clamp(34px, 10vw, 84px)/1 var(--font-display); white-space: nowrap; color: var(--ink); text-transform: uppercase;
   letter-spacing: .005em; filter: url(#ink); margin: 0;
 }
 .marks { display: grid; gap: 2px; margin-top: 14px; font-size: 10px; color: var(--ink); text-transform: uppercase; letter-spacing: .08em; }
@@ -128,7 +129,7 @@ h3 { font: 500 14px/1.5 var(--font-text); text-transform: lowercase; margin-bott
 @media (max-width: 620px) { .masthead { grid-template-columns: 1fr; gap: var(--s2); } .facts { grid-template-columns: 1fr; } }
 
 /* Typing log (home hero): the player acts, the level answers */
-.signal-log { margin-top: var(--s4); margin-bottom: 0; min-height: 1.6em; font-size: 12px; color: var(--faint); text-transform: lowercase; }
+.signal-log { margin-top: 0; margin-bottom: var(--s4); min-height: 1.6em; font-size: 12px; color: var(--faint); text-transform: lowercase; }
 .signal-log::before { content: "> "; color: var(--ink-dim); }
 .signal-log .log-act { color: var(--text); }
 .signal-log i { font-style: normal; color: var(--ink-dim); margin: 0 10px; }

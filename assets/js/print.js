@@ -37,16 +37,22 @@
     vx += (tx - vx) * 0.05;
     vy += (ty - vy) * 0.05;
     var speed = t * 0.00045;
+    var spin = t * 0.00022;                // slow roll of the whole corridor
     var o = 0;
     for (var y = 0; y < N; y++) {
-      var v = (y + 0.5) / N * 2 - 1 - vy;
+      var v0 = (y + 0.5) / N * 2 - 1 - vy;
       for (var x = 0; x < N; x++) {
-        var u = (x + 0.5) / N * 2 - 1 - vx;
+        var u0 = (x + 0.5) / N * 2 - 1 - vx;
+        // Twist grows with depth, so the frames spiral into the centre
+        var r0 = Math.sqrt(u0 * u0 + v0 * v0) + 1e-4;
+        var a = spin + 0.22 / (r0 + 0.25);
+        var ca = Math.cos(a), sa = Math.sin(a);
+        var u = u0 * ca - v0 * sa, v = u0 * sa + v0 * ca;
         // Corridor is a box: wider than tall, so floor and ceiling read as planes
         var ax = Math.abs(u) * 0.8, ay = Math.abs(v);
         var d = Math.max(ax, ay) + 1e-4;
         var z = 1 / d;                     // depth along the corridor
-        var zw = z + speed * 6;            // moving forward
+        var zw = z - speed * 9;            // frames are pulled away, into the depth
 
         // Rib frames every unit of depth: thin bright bands
         var rib = frac(zw);
@@ -66,6 +72,12 @@
 
         // Light pools under the ribs, on the floor
         if (ay >= ax && v > 0) lum += 0.22 * fog * Math.max(0, 1 - Math.abs(rib - 0.5) * 2.6);
+
+        // Streaks that rush into the centre along the corridor
+        var ang = Math.atan2(v0, u0);
+        var lane = frac(ang * 3.8197 + 0.5);              // 24 radial lanes
+        var dash = frac(z * 0.5 - speed * 14 + Math.floor(ang * 3.8197) * 0.37);
+        if (lane < 0.12 && dash < 0.18) lum += 0.55 * fog;
 
         // Exit light at the far end
         var r = Math.sqrt(u * u * 0.64 + v * v);
