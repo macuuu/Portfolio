@@ -109,14 +109,16 @@ h3 { font: 500 14px/1.5 var(--font-text); text-transform: lowercase; margin-bott
 .hero .print canvas { display: none; }
 .hero .print.is-live canvas { display: block; }
 .hero .signal-log { width: 100%; margin-top: 0; }
-/* Intro (with JS): the print fades in first, the log and the scroll cue follow */
+/* Intro (with JS): the print and the log prompt fade in together, the scroll cue follows */
 .js .hero .print { opacity: 0; transform: scale(.96); transition: opacity 2.4s ease, transform 3.2s cubic-bezier(.2, .7, .2, 1); }
 .js .hero.is-on .print { opacity: 1; transform: none; }
-.hero .signal-log { transition: opacity .5s ease; }
-.hero .signal-log.is-waiting { opacity: 0; }
+.js .hero .signal-log { opacity: 0; transition: opacity 2.4s ease; }
+.js .hero.is-on .signal-log { opacity: 1; }
 .js .hero .scroll-cue { opacity: 0; transition: opacity 1.2s ease 5s; }
 .js .hero.is-on .scroll-cue { opacity: 1; }
-@media (prefers-reduced-motion: reduce) { .js .hero .print, .js .hero .scroll-cue { transition: none; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .js .hero .print, .js .hero .signal-log, .js .hero .scroll-cue { transition: none; transform: none; } }
+/* Red pixel snow from the hero swirl (snow.js): one fixed layer over the page, never takes the pointer */
+.snow-layer { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 45; pointer-events: none; }
 .scroll-cue { position: absolute; left: 50%; bottom: var(--s3); transform: translateX(-50%); color: var(--faint); text-decoration: none; font-size: 18px; animation: cue 2.4s ease-in-out infinite; }
 .scroll-cue:hover { color: var(--ink); }
 @keyframes cue { 50% { transform: translate(-50%, 6px); } }
