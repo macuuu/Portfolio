@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261126e">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261126i">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -22,11 +22,11 @@
     <a class="brand" href="#top">Maciej Różewicz <span>Level Design</span></a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="#approach">Approach</a>
+      <a href="#about">About</a>
       <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
       <a href="#other">Other projects</a>
       <a href="#career">Career</a>
-      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -39,30 +39,112 @@
     <filter id="ink"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="1.6"/></filter>
   </svg>
   <section class="hero" id="top">
-    <div class="wrap">
-      <div class="masthead">
-        <div class="print print-live"><canvas aria-hidden="true"></canvas><img src="assets/img/print-hero.webp" alt="" width="640" height="640"></div>
-        <div>
-          <h1 class="wordmark">Maciej Różewicz</h1>
-        </div>
-      </div>
+    <div class="hero-stage">
+      <div class="print print-live" data-video="assets/video/hero.mp4"><canvas aria-hidden="true"></canvas><img src="assets/img/print-hero.webp?v=20261126b" alt="" width="640" height="640"></div>
       <p class="signal-log" aria-label="The player acts, the level answers. For example: the player gets lost, a light shaft marks the way."><span class="log-act" aria-hidden="true">player gets lost</span><i aria-hidden="true">&rarr;</i><span class="log-res" aria-hidden="true">level: a light shaft marks the way</span></p>
-      <div class="intro">
-        <div class="cta-row">
-          <a class="btn primary" href="obversus-umbra.html">case study: obversus: umbra</a>
-          <a class="btn" href="#work">see the work</a>
-        </div>
-        <dl class="facts">
-          <div><dt>now</dt><dd>Game &amp; Level Designer, GrinGate Studios</dd></div>
-          <div><dt>engine</dt><dd>Unreal Engine 5</dd></div>
-          <div><dt>shipping since</dt><dd>2019, live-service titles</dd></div>
-          <div><dt>based in</dt><dd>Wrocław, Poland</dd></div>
-        </dl>
+    </div>
+    <a class="scroll-cue" href="#about" aria-label="Scroll to about">&darr;</a>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="block intro" id="about">
+    <div class="wrap">
+      <h1 class="sr-only">Maciej Różewicz, Level Designer</h1>
+      <div class="read reveal">
+        <p class="lead">Hi, I'm Maciej, a Senior Level Designer with 7+ years of experience in puzzle and gameplay design.</p>
+        <p>I work primarily in Unreal Engine 5. Over my career, I've created thousands of match-3 levels that experimented with the player's ability to learn through play. In my work, I always aim to catch glimpses of intrigue and uncertainty in the player's decision-making.</p>
+        <p>My craft is shaped by, and shapes, industry-standard gameplay and design practices. I'm looking to grow as a game developer on projects that help shape the future of games.</p>
       </div>
-      <figure class="hero-shot reveal">
-        <div class="frame-img reg"><img src="assets/img/ou/20-turbine-hall-gold.webp" alt="Dark machine hall in Obversus: Umbra, warm window light at the back, pipes and red lamps in the foreground" data-zoom></div>
-        <figcaption><strong>Obversus: Umbra.</strong> Warm light at the back pulls the eye across a dark hall. Greybox, captured in engine.</figcaption>
-      </figure>
+      <dl class="facts reveal">
+        <div><dt>now</dt><dd>Game &amp; Level Designer, GrinGate Studios</dd></div>
+        <div><dt>engine</dt><dd>Unreal Engine 5</dd></div>
+        <div><dt>shipping since</dt><dd>2019, live-service titles</dd></div>
+        <div><dt>based in</dt><dd>Wrocław, Poland</dd></div>
+      </dl>
+      <h2 class="reveal">Skills</h2>
+      <div class="skills reveal">
+        <div>
+          <h3>Level art</h3>
+          <ul>
+            <li>Lighting for gameplay and mood</li>
+            <li>Shape language and silhouette</li>
+            <li>Composition and framing</li>
+            <li>Fog, depth and value structure</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Level design</h3>
+          <ul>
+            <li>Blockout and greybox</li>
+            <li>Spatial flow and pacing</li>
+            <li>Combat encounters and cover</li>
+            <li>Traversal and verticality</li>
+            <li>Environmental puzzles</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Unreal Engine 5</h3>
+          <ul>
+            <li>World Partition, Data Layers</li>
+            <li>Packed Level Actors, modular kits</li>
+            <li>Modeling tools, Scythe Editor, PCG splines</li>
+            <li>Blueprints, Level Sequencer</li>
+            <li>Lights, fog, post process</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Other tools</h3>
+          <ul>
+            <li>TouchDesigner</li>
+            <li>Git, Perforce</li>
+            <li>Figma, Adobe</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="obversus-umbra.html">case study: obversus: umbra</a>
+        <a class="btn" href="#work">see the work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED WORK ============ -->
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><span class="num">01</span>Featured work</p>
+          <h2>Obversus: Umbra</h2>
+        </div>
+        <p>FPS in Unreal Engine 5, GrinGate Studios. My blockout of the main map: a huge Dam and the layers below it. All images are my greybox, captured in engine.</p>
+      </div>
+
+      <a class="feature reveal" href="obversus-umbra.html">
+        <div class="feature-media reg">
+          <img src="assets/img/ou/22-red-lounge.webp" alt="Waiting room lit by three red light panels, with stairs at the back">
+        </div>
+        <div class="feature-body">
+          <p class="eyebrow">Case study &middot; 2026, in development</p>
+          <h3>Underground Dam: building a megastructure in greybox</h3>
+          <ul class="tags">
+            <li>Blockout</li><li>Lighting for gameplay</li><li>Composition</li><li>World Partition</li><li>Modular kit</li><li>PCG</li>
+          </ul>
+          <ul class="points">
+            <li>Vertical hub: Dam wall, turbine hall, sewers, flooded layers</li>
+            <li>Value, colour and silhouette guide the player</li>
+            <li>A greybox pipeline that keeps the level fast to change</li>
+          </ul>
+          <span class="more">Read the case study</span>
+        </div>
+      </a>
+
+      <div class="gallery">
+        <figure class="g-8 reveal"><img src="assets/img/ou/23-storage-shelves.webp" alt="Dark storeroom with shelves, one cold strip light and a red table" loading="lazy" data-zoom><figcaption><strong>Storeroom.</strong> One cold strip light, one red table, the rest stays dark.</figcaption></figure>
+        <figure class="g-4 reveal"><img src="assets/img/ou/13-pillar-canyon.webp" alt="Stacked catwalks between huge orange pillars" loading="lazy" data-zoom><figcaption><strong>Pillar shaft.</strong> Warm vertical mass around a hanging catwalk.</figcaption></figure>
+        <figure class="g-4 reveal"><img src="assets/img/ou/02-hangar-red-signals.webp" alt="Hangar with three red signal lights under steel trusses" loading="lazy" data-zoom><figcaption><strong>Hangar.</strong> Three red signals give a focal point in a dark, wide volume.</figcaption></figure>
+        <figure class="g-4 reveal"><img src="assets/img/ou/14-flooded-tunnel.webp" alt="Flooded tunnel with bright exit and bodies in red water" loading="lazy" data-zoom><figcaption><strong>Flooded tunnel.</strong> A bright exit at the end of a symmetric frame.</figcaption></figure>
+        <figure class="g-4 reveal"><img src="assets/img/ou/12-catwalk-red-alert.webp" alt="Catwalk in red alert lighting, first-person view" loading="lazy" data-zoom><figcaption><strong>Alert state.</strong> The same catwalk, now in red.</figcaption></figure>
+      </div>
     </div>
   </section>
 
@@ -71,7 +153,7 @@
     <div class="wrap">
       <div class="section-head">
         <div>
-          <p class="eyebrow"><span class="num">01</span>Approach</p>
+          <p class="eyebrow"><span class="num">02</span>Approach</p>
           <h2>Greybox breathes through light, shape and composition.</h2>
         </div>
         <p>If a blockout does not read with flat materials, it will not read with final art either.</p>
@@ -111,46 +193,6 @@
             </ul>
           </div>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FEATURED WORK ============ -->
-  <section class="block" id="work">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow"><span class="num">02</span>Featured work</p>
-          <h2>Obversus: Umbra</h2>
-        </div>
-        <p>FPS in Unreal Engine 5, GrinGate Studios. My blockout of the main map: a huge Dam and the layers below it. All images are my greybox, captured in engine.</p>
-      </div>
-
-      <a class="feature reveal" href="obversus-umbra.html">
-        <div class="feature-media reg">
-          <img src="assets/img/ou/22-red-lounge.webp" alt="Waiting room lit by three red light panels, with stairs at the back">
-        </div>
-        <div class="feature-body">
-          <p class="eyebrow">Case study &middot; 2026, in development</p>
-          <h3>Underground Dam: building a megastructure in greybox</h3>
-          <ul class="tags">
-            <li>Blockout</li><li>Lighting for gameplay</li><li>Composition</li><li>World Partition</li><li>Modular kit</li><li>PCG</li>
-          </ul>
-          <ul class="points">
-            <li>Vertical hub: Dam wall, turbine hall, sewers, flooded layers</li>
-            <li>Value, colour and silhouette guide the player</li>
-            <li>A greybox pipeline that keeps the level fast to change</li>
-          </ul>
-          <span class="more">Read the case study</span>
-        </div>
-      </a>
-
-      <div class="gallery">
-        <figure class="g-8 reveal"><img src="assets/img/ou/23-storage-shelves.webp" alt="Dark storeroom with shelves, one cold strip light and a red table" loading="lazy" data-zoom><figcaption><strong>Storeroom.</strong> One cold strip light, one red table, the rest stays dark.</figcaption></figure>
-        <figure class="g-4 reveal"><img src="assets/img/ou/13-pillar-canyon.webp" alt="Stacked catwalks between huge orange pillars" loading="lazy" data-zoom><figcaption><strong>Pillar shaft.</strong> Warm vertical mass around a hanging catwalk.</figcaption></figure>
-        <figure class="g-4 reveal"><img src="assets/img/ou/02-hangar-red-signals.webp" alt="Hangar with three red signal lights under steel trusses" loading="lazy" data-zoom><figcaption><strong>Hangar.</strong> Three red signals give a focal point in a dark, wide volume.</figcaption></figure>
-        <figure class="g-4 reveal"><img src="assets/img/ou/14-flooded-tunnel.webp" alt="Flooded tunnel with bright exit and bodies in red water" loading="lazy" data-zoom><figcaption><strong>Flooded tunnel.</strong> A bright exit at the end of a symmetric frame.</figcaption></figure>
-        <figure class="g-4 reveal"><img src="assets/img/ou/12-catwalk-red-alert.webp" alt="Catwalk in red alert lighting, first-person view" loading="lazy" data-zoom><figcaption><strong>Alert state.</strong> The same catwalk, now in red.</figcaption></figure>
       </div>
     </div>
   </section>
@@ -203,7 +245,7 @@
         <article class="card reveal">
           <a class="card-media" href="qubic-adventures.html"><img src="assets/img/projects/qubic/01.webp" alt="Qubic Adventures puzzle board" loading="lazy"></a>
           <div class="body">
-            <p class="meta">Unity &middot; Concept, level design &middot; Nintendo Switch prototype</p>
+            <p class="meta">Unreal Engine 5 &middot; Concept, level design &middot; Nintendo Switch prototype</p>
             <h3><a href="qubic-adventures.html">Qubic Adventures</a></h3>
             <ul class="points">
               <li>Two players, one shifting board</li>
@@ -219,7 +261,7 @@
         <article class="card reveal">
           <a class="card-media" href="puzzle-games.html"><img src="assets/img/projects/puzzle-games/tp-01.webp" alt="Traffic Puzzle level with a plane and rows of cars" loading="lazy"></a>
           <div class="body">
-            <p class="meta">Unity &middot; Live service &middot; Picadilla Games, Huuuge Games, Playtika</p>
+            <p class="meta">Unreal Engine 5 &middot; Live service &middot; Picadilla Games, Huuuge Games, Playtika</p>
             <h3><a href="puzzle-games.html">Traffic Puzzle and Best Fiends</a></h3>
             <ul class="points">
               <li>Over 10 million and over 100 million players</li>
@@ -246,101 +288,39 @@
         <p>7+ years of level design: iterate fast, trust the data. Now applied to 3D space, light and encounters in Unreal Engine 5.</p>
       </div>
 
-      <div class="about-grid">
-        <ol class="timeline">
-          <li class="current">
-            <span class="when">2026 to now</span>
-            <h3>Game &amp; Level Designer</h3>
-            <div class="where">GrinGate Studios &middot; Obversus: Umbra</div>
-            <p class="one">Blockout of the main hub level: the Dam and the layers below it.</p>
-          </li>
-          <li>
-            <span class="when">2024 to 2025</span>
-            <h3>Level Designer</h3>
-            <div class="where">Playtika &middot; Best Fiends</div>
-            <p class="one">Live-service levels, changed from player data.</p>
-          </li>
-          <li>
-            <span class="when">2022 to 2023</span>
-            <h3>Senior Level Designer</h3>
-            <div class="where">Huuuge Games &middot; Traffic Puzzle</div>
-            <p class="one">Owned Special Level Content and mentored junior designers.</p>
-          </li>
-          <li>
-            <span class="when">2019 to 2022</span>
-            <h3>Game Designer</h3>
-            <div class="where">Picadilla Games &middot; Traffic Puzzle</div>
-            <p class="one">Level design direction from early development to LiveOps.</p>
-          </li>
-        </ol>
-
-        <div>
-          <div class="skills">
-            <div>
-              <h3>Level art</h3>
-              <ul>
-                <li>Lighting for gameplay and mood</li>
-                <li>Shape language and silhouette</li>
-                <li>Composition and framing</li>
-                <li>Fog, depth and value structure</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Level design</h3>
-              <ul>
-                <li>Blockout and greybox</li>
-                <li>Spatial flow and pacing</li>
-                <li>Combat encounters and cover</li>
-                <li>Traversal and verticality</li>
-                <li>Environmental puzzles</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Unreal Engine 5</h3>
-              <ul>
-                <li>World Partition, Data Layers</li>
-                <li>Packed Level Actors, modular kits</li>
-                <li>Modeling tools, Scythe Editor, PCG splines</li>
-                <li>Blueprints, Level Sequencer</li>
-                <li>Lights, fog, post process</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Other tools</h3>
-              <ul>
-                <li>Unity</li>
-                <li>TouchDesigner</li>
-                <li>Git, Perforce</li>
-                <li>Figma, Adobe</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section class="block" id="about">
-    <div class="wrap">
-      <p class="eyebrow"><span class="num">05</span>About</p>
-      <div class="about-grid">
-        <div>
-          <h2>Readable spaces, with a little uncertainty.</h2>
-        </div>
-        <div class="read">
-          <p class="lead">Hi, I'm Maciej, a Senior Level Designer with 7+ years of experience in puzzle and gameplay design.</p>
-          <p>I work primarily in Unreal Engine 5. Over my career, I've created thousands of match-3 levels that experimented with the player's ability to learn through play. In my work, I always aim to catch glimpses of intrigue and uncertainty in the player's decision-making.</p>
-          <p>My craft is shaped by, and shapes, industry-standard gameplay and design practices. I'm looking to grow as a game developer on projects that help shape the future of games.</p>
-        </div>
-      </div>
+      <ol class="timeline">
+        <li class="current">
+          <span class="when">2026 to now</span>
+          <h3>Game &amp; Level Designer</h3>
+          <div class="where">GrinGate Studios &middot; Obversus: Umbra</div>
+          <p class="one">Blockout of the main hub level: the Dam and the layers below it.</p>
+        </li>
+        <li>
+          <span class="when">2024 to 2025</span>
+          <h3>Level Designer</h3>
+          <div class="where">Playtika &middot; Best Fiends</div>
+          <p class="one">Live-service levels, changed from player data.</p>
+        </li>
+        <li>
+          <span class="when">2022 to 2023</span>
+          <h3>Senior Level Designer</h3>
+          <div class="where">Huuuge Games &middot; Traffic Puzzle</div>
+          <p class="one">Owned Special Level Content and mentored junior designers.</p>
+        </li>
+        <li>
+          <span class="when">2019 to 2022</span>
+          <h3>Game Designer</h3>
+          <div class="where">Picadilla Games &middot; Traffic Puzzle</div>
+          <p class="one">Level design direction from early development to LiveOps.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
   <!-- ============ CONTACT ============ -->
   <section class="block tight contact" id="contact">
     <div class="wrap">
-      <p class="eyebrow"><span class="num">06</span>Contact</p>
+      <p class="eyebrow"><span class="num">05</span>Contact</p>
       <h2>Let's build a game<br>together.</h2>
       <div class="contact-links">
         <a class="btn" href="https://www.linkedin.com/in/maciej-r%C3%B3%C5%BCewicz-6a57a228a/" target="_blank" rel="noopener">LinkedIn</a>
@@ -360,7 +340,7 @@
 </footer>
 
 <script src="assets/js/main.js?v=20261126a"></script>
-<script src="assets/js/print.js?v=20261126h"></script>
+<script src="assets/js/print.js?v=20261126m"></script>
 <script src="assets/js/log.js?v=20261126b"></script>
 </body>
 </html>
