@@ -86,14 +86,13 @@
   var caret = document.createElement("span");
   caret.className = "caret";
   var run = 0, timer = 0;
-  var PLAYER = "player "; // always on screen, only the action after it is retyped
 
   function wait(ms, fn) { timer = setTimeout(fn, ms); }
 
-  // Type text into el one character at a time after a fixed prefix, the caret follows the text
-  function type(el, prefix, text, speed, id, done) {
+  // Type text into el one character at a time, the caret follows the text
+  function type(el, text, speed, id, done) {
     var i = 0;
-    el.textContent = prefix;
+    el.textContent = "";
     el.appendChild(caret);
     (function tick() {
       if (id !== run) return;
@@ -108,22 +107,22 @@
     var id = ++run;
     var m = nextMoment();
     res.textContent = "";
-    type(act, PLAYER, m[0], 36, id, function () {
+    type(act, m[0], 36, id, function () {
       wait(600, function () {
-        type(res, "", "level: " + m[1], 28, id, function () {
+        type(res, m[1], 28, id, function () {
           wait(2600, function () { if (id === run) cycle(); });
         });
       });
     });
   }
 
-  // Intro: "> player" and the caret fade in together with the print square (print.js sets "is-on"),
+  // Intro: the "> " prompt and the caret fade in together with the print square (print.js sets "is-on"),
   // typing starts when the fade is done.
   var INTRO_WAIT = 2600;
   var hero = document.querySelector(".hero");
   var ready = false, visible = true;
 
-  act.textContent = PLAYER;
+  act.textContent = "";
   act.appendChild(caret);
   res.textContent = "";
 

@@ -1,13 +1,13 @@
-// Snow from the swirl: while the cursor is over the hero print, red pixel flakes (the print ink) fall out of it.
-// When the cursor leaves the print, some flakes follow it for a short time.
+// Snow from the swirls: while the cursor is over one of the hero eyes, red pixel flakes (the print ink) fall out of it.
+// When the cursor leaves the eye, some flakes follow it for a short time.
 // The cursor is a wind source: flakes near a moving cursor are pushed along its path.
 // Every flake fades out and is removed about 5 seconds (4 to 6) after it is born.
 (function () {
   "use strict";
 
   var hero = document.querySelector(".hero");
-  var holder = hero && hero.querySelector(".print-live");
-  if (!holder) return;
+  var holders = hero ? [].slice.call(hero.querySelectorAll(".print-live")) : [];
+  if (!holders.length) return;
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   var canvas = document.createElement("canvas");
@@ -29,7 +29,7 @@
 
   var flakes = [];
   var dpr = 1, vw = 0, vh = 0;
-  var mouse = { x: -1e4, y: -1e4, vx: 0, vy: 0, t: 0, inside: false };
+  var mouse = { x: -1e4, y: -1e4, vx: 0, vy: 0, t: 0, inside: false, eye: null };
   var lastScroll = window.scrollY;
   var running = false, lastT = 0, emitAcc = 0;
 
@@ -50,25 +50,32 @@
     for (var i = 0; i < flakes.length; i++) flakes[i].y -= dy;
   }, { passive: true });
 
-  // The swirl is a disc in the middle of the square print
-  function disc() {
+  // Each swirl is a disc in the middle of its square print. The mirrored eye spins the other way.
+  function disc(holder) {
     var r = holder.getBoundingClientRect();
-    return { cx: r.left + r.width / 2, cy: r.top + r.height / 2, r: r.width * 0.42, cell: r.width / 128 };
+    return {
+      cx: r.left + r.width / 2, cy: r.top + r.height / 2, r: r.width * 0.42, cell: r.width / 128,
+      spin: holder.classList.contains("is-mirror") ? -1 : 1
+    };
   }
-  function overSwirl(x, y) {
-    var d = disc();
-    var dx = x - d.cx, dy = y - d.cy;
-    return dx * dx + dy * dy <= d.r * d.r;
+  // The eye under the point, or null
+  function eyeAt(x, y) {
+    for (var i = 0; i < holders.length; i++) {
+      var d = disc(holders[i]);
+      var dx = x - d.cx, dy = y - d.cy;
+      if (dx * dx + dy * dy <= d.r * d.r) return holders[i];
+    }
+    return null;
   }
 
   function spawn(now) {
-    if (flakes.length >= MAX) return;
-    var d = disc();
+    if (flakes.length >= MAX || !mouse.eye) return;
+    var d = disc(mouse.eye);
     var a = Math.random() * Math.PI * 2;
     var rr = d.r * Math.sqrt(Math.random());
     var x = d.cx + Math.cos(a) * rr, y = d.cy + Math.sin(a) * rr;
     // Leave the swirl along its spin (tangent) with a small push outward
-    var spin = 40 + Math.random() * 50, out = 15 + Math.random() * 30;
+    var spin = d.spin * (40 + Math.random() * 50), out = 15 + Math.random() * 30;
     flakes.push({
       x: x, y: y,
       vx: -Math.sin(a) * spin + Math.cos(a) * out,
@@ -96,7 +103,8 @@
     mouse.y = e.clientY;
     mouse.t = now;
 
-    var inside = hero.classList.contains("is-on") && overSwirl(mouse.x, mouse.y);
+    mouse.eye = hero.classList.contains("is-on") ? eyeAt(mouse.x, mouse.y) : null;
+    var inside = !!mouse.eye;
     if (mouse.inside && !inside) {
       // Leaving the swirl: a part of the flakes chases the cursor
       for (var i = 0; i < flakes.length; i++) {
@@ -107,7 +115,7 @@
     if (inside || flakes.length) start();
   }
   window.addEventListener("pointermove", onMove, { passive: true });
-  document.addEventListener("pointerleave", function () { mouse.inside = false; mouse.x = mouse.y = -1e4; });
+  document.addEventListener("pointerleave", function () { mouse.inside = false; mouse.eye = null; mouse.x = mouse.y = -1e4; });
 
   function start() {
     if (running) return;
