@@ -85,7 +85,7 @@
 
   var caret = document.createElement("span");
   caret.className = "caret";
-  var run = 0, timer = 0, started = false;
+  var run = 0, timer = 0;
 
   function wait(ms, fn) { timer = setTimeout(fn, ms); }
 
@@ -116,14 +116,34 @@
     });
   }
 
-  // The first moment is already on screen; start typing new ones while the line is visible
-  function start() {
-    if (!started) { started = true; recent.push("gets lost", "a light shaft marks the way"); wait(2400, cycle); }
-    else cycle();
+  // Intro: the line stays empty until the print square has faded in (print.js sends "hero:on"),
+  // then the caret blinks for a beat and the first moment is typed.
+  var INTRO_WAIT = 2200, CARET_WAIT = 900;
+  var hero = document.querySelector(".hero");
+  var ready = false, visible = true;
+
+  act.textContent = "";
+  res.textContent = "";
+  log.classList.add("is-waiting");
+
+  function start() { if (ready && visible) cycle(); }
+  function stop() { run++; clearTimeout(timer); }
+
+  function intro() {
+    // Own timers: scrolling away during the intro must not cancel it
+    setTimeout(function () {
+      log.classList.remove("is-waiting");
+      act.appendChild(caret);
+      setTimeout(function () { ready = true; start(); }, CARET_WAIT);
+    }, INTRO_WAIT);
   }
-  function stop() { run++; clearTimeout(timer); caret.remove(); }
+  if (hero && hero.classList.contains("is-on")) intro();
+  else document.addEventListener("hero:on", intro, { once: true });
 
   if ("IntersectionObserver" in window) {
-    new IntersectionObserver(function (en) { en[0].isIntersecting ? start() : stop(); }).observe(log);
-  } else start();
+    new IntersectionObserver(function (en) {
+      visible = en[0].isIntersecting;
+      visible ? start() : stop();
+    }).observe(log);
+  }
 })();
