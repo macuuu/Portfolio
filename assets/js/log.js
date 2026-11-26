@@ -14,15 +14,15 @@
     { // lost: the level guides without signs
       act: ["gets lost", "hesitates at a junction", "turns around twice", "stops in a dark hall",
             "walks into a dead end", "cannot find the exit", "circles the same room"],
-      res: ["a light shaft marks the way", "a red lamp pulls the eye to the door", "the dam wall shows above the roofs",
+      res: ["a light shaft marks the way", "a red lamp pulls the eye to the door", "the observatory wall shows above the roofs",
             "the fog thins over the right path", "a cable on the floor leads to the exit", "the only lit doorway says go here",
             "a draft moves the dust toward the stairs", "a railing points at the next catwalk"]
     },
     { // curious: exploration pays off
       act: ["explores a side room", "climbs a ladder nobody uses", "looks behind the generator", "checks a dead end",
             "crawls under a broken pipe", "opens a locker", "follows a narrow ledge"],
-      res: ["a hidden view of the dam", "ammo under a broken stair", "a note that explains the flood",
-            "a shortcut back to the hub", "a window into the next fight", "a quiet room nobody else found",
+      res: ["a hidden view of the observatory", "ammo under a broken stair", "a note that explains the flood",
+            "a shortcut back to the base", "a window into the next fight", "a quiet room nobody else found",
             "a lever that opens an old gate", "the first look at the turbine hall"]
     },
     { // combat: fair, readable spaces
@@ -36,7 +36,7 @@
       act: ["looks up", "looks down from a catwalk", "stops at a window", "leans over a railing",
             "reaches the top of the stairs", "steps out of a tunnel"],
       res: ["the route seen from above", "the next goal framed by a door", "the turbine hall opens below",
-            "the whole dam in one view", "a light far away to walk toward", "the path they came from, far below"]
+            "the whole observatory in one view", "a light far away to walk toward", "the path they came from, far below"]
     },
     { // momentum: pacing and payoff
       act: ["pushes forward", "sprints down a corridor", "opens a heavy door", "drops into a shaft",
@@ -56,9 +56,9 @@
             "a view outside, the first daylight", "silence and a clear way forward"]
     },
     { // return: backtracking feels new
-      act: ["goes back the same way", "returns to the hub", "retraces their steps"],
+      act: ["goes back the same way", "returns to the base", "retraces their steps"],
       res: ["the space looks new from the other side", "a gate opened by the last fight",
-            "a shortcut they unlocked earlier", "the hub, seen from a new height"]
+            "a shortcut they unlocked earlier", "the base, seen from a new height"]
     }
   ];
 

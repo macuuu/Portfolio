@@ -111,7 +111,7 @@ h3 { font: 500 14px/1.5 var(--font-text); text-transform: lowercase; margin-bott
 .hero .print canvas, .hero .print img { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
 .hero .print canvas { display: none; }
 .hero .print.is-live canvas { display: block; }
-.hero .signal-log { width: 100%; margin-top: 0; }
+.hero .signal-log { width: 100%; margin-top: 0; text-align: center; }
 /* Intro (with JS): the print and the log prompt fade in together, the scroll cue follows */
 .js .hero .print { opacity: 0; transform: scale(.96); transition: opacity 2.4s ease, transform 3.2s cubic-bezier(.2, .7, .2, 1); }
 .js .hero.is-on .print { opacity: 1; transform: none; }
